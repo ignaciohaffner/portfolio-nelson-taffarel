@@ -100,10 +100,7 @@ const Biography = () => {
   };
 
   return (
-    <section
-      id="biografia"
-      className="min-h-screen py-20 bg-white dark:bg-gray-900 flex flex-col justify-center"
-    >
+    <section id="biografia" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <motion.h2
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-purple-600 dark:text-purple-400"
@@ -114,7 +111,7 @@ const Biography = () => {
           Biografía
         </motion.h2>
 
-        <div className="relative h-[400px] max-w-3xl mx-auto">
+        <div className="relative h-[280px] sm:h-[350px] max-w-3xl mx-auto">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -130,7 +127,7 @@ const Biography = () => {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
-              onDragEnd={(_, { offset, velocity }) => {
+              onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
                 if (swipe < -swipeConfidenceThreshold) {
@@ -141,54 +138,53 @@ const Biography = () => {
               }}
               className="absolute w-full"
             >
-              <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-xl">
-                <div className="text-6xl mb-6">
+              <div className="bg-gray-100 dark:bg-gray-800 p-3 sm:p-4 md:p-8 rounded-lg shadow-xl">
+                <div className="text-3xl sm:text-4xl md:text-6xl mb-2 sm:mb-4 md:mb-6">
                   {bioItems[currentIndex].icon}
                 </div>
-                <h3 className="text-2xl font-semibold mb-6 text-purple-600 dark:text-purple-400">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4 md:mb-6 text-purple-600 dark:text-purple-400">
                   {bioItems[currentIndex].title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   {bioItems[currentIndex].content}
                 </p>
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        <div className="absolute left-0 right-0 flex items-center justify-center gap-4 mt-8">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => paginate(-1)}
-            className="rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <div className="flex items-center gap-2">
-            {bioItems.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex
-                    ? "bg-purple-600 dark:bg-purple-400"
-                    : "bg-gray-300 dark:bg-gray-600"
-                }`}
-              />
-            ))}
+          <div className="absolute left-0 right-0 top-[-45px] sm:top-[-60px] flex items-center justify-center gap-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => paginate(-1)}
+              className="rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <div className="flex items-center gap-2">
+              {bioItems.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setDirection(index > currentIndex ? 1 : -1);
+                    setCurrentIndex(index);
+                  }}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentIndex
+                      ? "bg-purple-600 dark:bg-purple-400"
+                      : "bg-gray-300 dark:bg-gray-600"
+                  }`}
+                />
+              ))}
+            </div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => paginate(1)}
+              className="rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => paginate(1)}
-            className="rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
         </div>
       </div>
     </section>
