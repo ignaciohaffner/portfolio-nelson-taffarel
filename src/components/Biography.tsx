@@ -9,7 +9,8 @@ const Biography = () => {
 
   const bioItems = [
     {
-      title: "🎭 Sobre mí",
+      icon: "🎭",
+      title: "Sobre mí",
       content: (
         <>
           Actor formado en el prestigioso taller de arte dramático de{" "}
@@ -24,7 +25,8 @@ const Biography = () => {
       ),
     },
     {
-      title: "📺 Experiencia en TV",
+      icon: "📺",
+      title: "Experiencia en TV",
       content: (
         <>
           He participado en reconocidas producciones televisivas como{" "}
@@ -37,7 +39,8 @@ const Biography = () => {
       ),
     },
     {
-      title: "🎬 Teatro",
+      icon: "🎬",
+      title: "Teatro",
       content: (
         <>
           Sobre las tablas, he llevado a escena grandes clásicos en teatros como
@@ -49,7 +52,8 @@ const Biography = () => {
       ),
     },
     {
-      title: "🎥 Publicidad & Videoclips",
+      icon: "🎥",
+      title: "Publicidad & Videoclips",
       content: (
         <>
           He sido parte de campañas publicitarias para marcas líderes como{" "}
