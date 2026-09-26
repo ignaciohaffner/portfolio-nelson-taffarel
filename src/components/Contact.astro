@@ -2,9 +2,23 @@
 import { site } from '../content/site';
 ---
 <section id="contacto" aria-labelledby="contacto-titulo">
-  <h2 id="contacto-titulo">{site.sections.contact}</h2>
-  <ul>
-    <li><a href={site.links.instagram} target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href={site.links.vimeo} target="_blank" rel="noopener">Vimeo</a></li>
-  </ul>
+  <div class="end">
+    <h2 id="contacto-titulo">{site.sections.contact}</h2>
+    <ul>
+      <li><a href={site.links.instagram} target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href={site.links.vimeo} target="_blank" rel="noopener">Vimeo</a></li>
+    </ul>
+  </div>
 </section>
+
+<style>
+  .end { max-width: 90rem; margin-inline: auto; padding-top: clamp(2.5rem, 6vw, 5rem); border-top: 1px solid var(--rule); }
+  ul { margin-top: clamp(2rem, 5vw, 4rem); display: grid; gap: 0.25rem; }
+  a {
+    display: inline-block; padding-block: 0.25rem;
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(3rem, 11vw, 8.5rem); line-height: 1; letter-spacing: -0.03em;
+    text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 0.06em; text-underline-offset: 0.12em;
+    transition: text-decoration-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+  }
+  a:hover { text-decoration-color: var(--curtain-lit); }
+</style>

@@ -281,10 +281,10 @@ Cada fase termina con `npm run build` limpio y un commit.
 - **Aceptación:** ninguna request a imgur. YouTube no carga nada hasta el click.
 
 ### Fase 3 — Diseño (Impeccable)
-- [ ] `/impeccable init` → PRODUCT.md (portfolio de actor, audiencia: directores de casting, productoras, agencias, público).
-- [ ] `/impeccable` new-work con la dirección de §3 → DESIGN.md + `tokens.css`.
-- [ ] Implementar las secciones de §3.3 y el motion de §3.4.
-- [ ] Correr `node ~/.claude/skills/impeccable/scripts/detect.mjs --json src/` una vez y corregir.
+- [x] `/impeccable init` → PRODUCT.md (portfolio de actor, audiencia: directores de casting, productoras, agencias, público).
+- [x] `/impeccable` new-work con la dirección de §3 → DESIGN.md + `tokens.css`.
+- [x] Implementar las secciones de §3.3 y el motion de §3.4.
+- [x] Correr `node ~/.claude/skills/impeccable/scripts/detect.mjs --json src/` una vez y corregir.
 - **Aceptación:** screenshots a 375 px y 1440 px, sin scroll horizontal, contraste AA en todo.
 
 ### Fase 4 — Pulido y a11y

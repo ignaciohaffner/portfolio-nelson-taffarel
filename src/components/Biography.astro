@@ -3,11 +3,44 @@ import { site } from '../content/site';
 import { bio } from '../content/bio';
 ---
 <section id="biografia" aria-labelledby="biografia-titulo">
-  <h2 id="biografia-titulo">{site.sections.bio}</h2>
-  {bio.map((item, i) => (
-    <article class="bio-item">
-      <h3>{item.title}</h3>
-      <p set:html={item.html} />
-    </article>
-  ))}
+  <div class="layout">
+    <h2 id="biografia-titulo">{site.sections.bio}</h2>
+    <div class="items">
+      {bio.map((item) => (
+        <article class="item">
+          <h3>{item.title}</h3>
+          <p set:html={item.html} />
+        </article>
+      ))}
+    </div>
+  </div>
 </section>
+
+<style>
+  .layout { max-width: 90rem; margin-inline: auto; display: grid; gap: 3rem; }
+  .item { padding-block: 2.5rem; border-top: 1px solid var(--rule); }
+  .item:first-child { padding-top: 0; border-top: 0; }
+  h3 {
+    font-family: var(--font-display); font-weight: 600; font-size: var(--step-h3);
+    line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1.25rem; color: var(--bone);
+  }
+  p { max-width: var(--measure); color: var(--bone); text-wrap: pretty; }
+  p :global(strong) { font-weight: 650; }
+  /* Títulos y obras como créditos: tipografía distinta, mismo texto */
+  p :global(em) {
+    font-family: var(--font-display); font-style: normal; font-weight: 600;
+    font-size: 1.12em; letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 5rem; }
+    h2 { position: sticky; top: calc(var(--header-h) + 2rem); align-self: start; }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .item { animation: item-in linear both; animation-timeline: view(); animation-range: entry 5% entry 45%; }
+      @keyframes item-in { from { opacity: 0; transform: translateY(2rem); } }
+    }
+  }
+</style>

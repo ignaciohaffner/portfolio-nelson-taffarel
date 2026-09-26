@@ -3,6 +3,9 @@ import { site, SITE_URL } from '../content/site';
 import { reels } from '../content/reels';
 import { bio } from '../content/bio';
 import { heroPhoto } from '../content/gallery';
+import displayFont from '../../node_modules/@fontsource-variable/bodoni-moda/files/bodoni-moda-latin-opsz-normal.woff2?url';
+import '../styles/tokens.css';
+import '../styles/global.css';
 
 const title = 'Nelson Taffarel — Actor, comediante y locutor | Sitio oficial';
 const ogTitle = 'Nelson Taffarel — Actor, comediante y locutor';
@@ -89,10 +92,19 @@ const jsonLd = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
     <slot name="head" />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
+    <!--
+      THESIS: el sitio se lee como la secuencia de títulos de una película y su press kit; rechaza el portfolio-template centrado con cards, carrusel y violeta.
+      OWN-WORLD: negro cálido de sala (#0f0e0c), hueso (#ece5d8), un solo rojo telón; Bodoni Moda (opsz) para nombre y créditos, Public Sans para cuerpo; listas con filetes finos, sin cards ni sombras.
+      STORY: el visitante confirma quién es (h1 enorme), lee la trayectoria como créditos, ve el trabajo (galería, reels) y llega a Instagram/Vimeo.
+      FIRST VIEWPORT: retrato B/N a la derecha (desktop) o a sangre (mobile) con viñeta; "Nelson / Taffarel" en display gigante abajo a la izquierda; roles en versalitas y CTA "Conóceme" subrayado en rojo.
+      FORM: créditos de cine + press kit, dirección pinneada por PLAN-REWORK-SEO.md §3 (sin sorteo de concept-seed).
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
     <slot />
   </body>
 </html>

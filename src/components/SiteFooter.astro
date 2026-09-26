@@ -7,3 +7,10 @@ import { site } from '../content/site';
     <a href={site.credit.url} target="_blank" rel="noopener">{site.credit.name}</a>
   </p>
 </footer>
+
+<style>
+  .site-footer { padding: 2rem var(--gutter) 3rem; text-align: center; border-top: 1px solid var(--rule); }
+  p { font-size: var(--step-small); letter-spacing: 0.2em; text-transform: uppercase; color: var(--bone-dim); }
+  a { color: var(--bone); padding-block: 0.75rem; display: inline-block; }
+  a:hover { color: var(--curtain-lit); }
+</style>

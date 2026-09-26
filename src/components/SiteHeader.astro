@@ -4,8 +4,64 @@ import { site } from '../content/site';
 <header class="site-header">
   <a class="brand" href="#home">{site.name}</a>
   <nav aria-label="Principal">
-    <ul>
-      {site.nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
-    </ul>
+    <details class="menu">
+      <summary>Menú</summary>
+      <ul>
+        {site.nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+      </ul>
+    </details>
   </nav>
 </header>
+
+<style>
+  .site-header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: var(--header-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding-inline: var(--gutter);
+    background: color-mix(in srgb, var(--ink) 0%, transparent);
+  }
+  /* Transparente sobre el hero; se oscurece al scrollear (CSS puro). Sin soporte: fondo sólido. */
+  @supports (animation-timeline: scroll()) {
+    .site-header { animation: header-in linear both; animation-timeline: scroll(root); animation-range: 0 40vh; }
+    @keyframes header-in { to { background: var(--ink); box-shadow: 0 1px 0 var(--rule); } }
+  }
+  @supports not (animation-timeline: scroll()) { .site-header { background: var(--ink); } }
+
+  .brand {
+    font-family: var(--font-display); font-weight: 700; font-size: 1.375rem;
+    letter-spacing: -0.01em; text-decoration: none;
+  }
+  summary {
+    list-style: none; cursor: pointer;
+    font-size: var(--step-small); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.875rem 0 0.875rem 1rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .menu ul { display: none; }
+  .menu[open] ul {
+    display: grid; gap: 0.25rem;
+    position: fixed; inset: var(--header-h) 0 0 0;
+    padding: 2rem var(--gutter);
+    background: var(--ink); align-content: start;
+  }
+  .menu li a {
+    display: block; padding: 0.5rem 0; text-decoration: none;
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(2.25rem, 10vw, 3.5rem); line-height: 1.1;
+  }
+  .menu li a:hover { color: var(--curtain-lit); }
+
+  @media (min-width: 900px) {
+    summary { display: none; }
+    .menu ul, .menu[open] ul {
+      display: flex; gap: 2.25rem; position: static; padding: 0; background: none; inset: auto;
+    }
+    .menu li a {
+      font-family: var(--font-text); font-weight: 500; font-size: var(--step-small);
+      letter-spacing: 0.22em; text-transform: uppercase; padding: 0.5rem 0;
+      text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 2px;
+      text-underline-offset: 0.6em; transition: text-decoration-color 0.3s var(--ease-out);
+    }
+    .menu li a:hover { color: var(--bone); text-decoration-color: var(--curtain-lit); }
+  }
+</style>
