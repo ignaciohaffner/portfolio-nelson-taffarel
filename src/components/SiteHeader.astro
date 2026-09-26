@@ -1,0 +1,11 @@
+---
+import { site } from '../content/site';
+---
+<header class="site-header">
+  <a class="brand" href="#home">{site.name}</a>
+  <nav aria-label="Principal">
+    <ul>
+      {site.nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+    </ul>
+  </nav>
+</header>

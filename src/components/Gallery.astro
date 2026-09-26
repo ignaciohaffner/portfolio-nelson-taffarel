@@ -1,0 +1,23 @@
+---
+import { Picture } from 'astro:assets';
+import { site } from '../content/site';
+import { gallery } from '../content/gallery';
+---
+<section id="galeria" aria-labelledby="galeria-titulo">
+  <h2 id="galeria-titulo">{site.sections.gallery}</h2>
+  <ul class="gallery">
+    {gallery.map((photo) => (
+      <li>
+        <Picture
+          src={photo.src}
+          alt={photo.alt}
+          formats={['avif', 'webp']}
+          widths={[400, 600]}
+          sizes="(min-width: 900px) 33vw, 50vw"
+          loading="lazy"
+          decoding="async"
+        />
+      </li>
+    ))}
+  </ul>
+</section>

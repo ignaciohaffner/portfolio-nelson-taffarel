@@ -1,0 +1,13 @@
+---
+import { site } from '../content/site';
+import { bio } from '../content/bio';
+---
+<section id="biografia" aria-labelledby="biografia-titulo">
+  <h2 id="biografia-titulo">{site.sections.bio}</h2>
+  {bio.map((item, i) => (
+    <article class="bio-item">
+      <h3>{item.title}</h3>
+      <p set:html={item.html} />
+    </article>
+  ))}
+</section>

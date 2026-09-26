@@ -1,0 +1,14 @@
+---
+import { site } from '../content/site';
+import { reels } from '../content/reels';
+---
+<section id="reels" aria-labelledby="reels-titulo">
+  <h2 id="reels-titulo">{site.sections.reels}</h2>
+  <ol class="reels">
+    {reels.map((reel) => (
+      <li>
+        <a href={`https://www.youtube.com/watch?v=${reel.id}`} rel="noopener">{reel.title}</a>
+      </li>
+    ))}
+  </ol>
+</section>

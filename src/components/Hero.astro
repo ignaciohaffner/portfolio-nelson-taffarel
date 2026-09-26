@@ -1,0 +1,22 @@
+---
+import { Picture } from 'astro:assets';
+import { site } from '../content/site';
+import { heroPhoto } from '../content/gallery';
+---
+<section id="home" class="hero">
+  <Picture
+    src={heroPhoto.src}
+    alt={heroPhoto.alt}
+    formats={['avif', 'webp']}
+    widths={[480, 640]}
+    sizes="(min-width: 900px) 40vw, 100vw"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="hero-copy">
+    <h1>{site.name}</h1>
+    <p class="roles">{site.rolesLine}</p>
+    <a class="cta" href="#biografia">{site.cta}</a>
+  </div>
+</section>
