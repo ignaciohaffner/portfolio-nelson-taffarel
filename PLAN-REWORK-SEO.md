@@ -275,9 +275,9 @@ Cada fase termina con `npm run build` limpio y un commit.
 - **Aceptación:** `curl` del `dist/index.html` muestra **todo el texto de la bio**, un solo h1 y el JSON-LD. `npm run build` ok.
 
 ### Fase 2 — Imágenes y medios
-- [ ] Descargar las fotos de imgur a `src/assets/photos/` y usar `<Picture>`.
-- [ ] Facade de YouTube en Reels.
-- [ ] Generar OG image y favicons.
+- [x] Descargar las fotos de imgur a `src/assets/photos/` y usar `<Picture>`.
+- [x] Facade de YouTube en Reels.
+- [x] Generar OG image y favicons.
 - **Aceptación:** ninguna request a imgur. YouTube no carga nada hasta el click.
 
 ### Fase 3 — Diseño (Impeccable)
