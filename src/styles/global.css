@@ -33,7 +33,7 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.25e
 
 main > section { padding: var(--space-section) var(--gutter); }
 h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase;
   font-weight: 700;
   font-size: var(--step-h2);
   line-height: 0.98;

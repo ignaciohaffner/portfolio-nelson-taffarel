@@ -1,10 +1,11 @@
 /* Créditos de cine — tokens. Contrastes medidos sobre --ink: bone 15.4, bone-dim 7.0, curtain-lit 5.3. */
 @font-face {
-  font-family: 'Bodoni Moda Variable';
+  font-family: 'Archivo Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 400 900;
-  src: url('../../node_modules/@fontsource-variable/bodoni-moda/files/bodoni-moda-latin-opsz-normal.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('../../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
@@ -25,10 +26,10 @@
   --curtain-lit: #e8524a; /* texto, foco, subrayados: 5.3:1 */
   --rule: #2a2723;
 
-  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, 'Times New Roman', serif;
+  --font-display: 'Archivo Variable', 'Arial Narrow', Impact, sans-serif;
   --font-text: 'Public Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --step-hero: clamp(3.5rem, 12vw, 11rem);
+  --step-hero: clamp(4.5rem, 15vw, 12rem);
   --step-h2: clamp(2.25rem, 6vw, 4.5rem);
   --step-h3: clamp(1.5rem, 2.6vw, 2.125rem);
   --step-body: clamp(1.0625rem, 0.4vw + 1rem, 1.25rem);

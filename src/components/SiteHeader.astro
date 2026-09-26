@@ -29,7 +29,7 @@ import { site } from '../content/site';
   @supports not (animation-timeline: scroll()) { .site-header { background: var(--ink); } }
 
   .brand {
-    font-family: var(--font-display); font-weight: 700; font-size: 1.375rem;
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 700; font-size: 1.375rem;
     letter-spacing: -0.01em; text-decoration: none;
   }
   summary {
@@ -47,7 +47,7 @@ import { site } from '../content/site';
   }
   .menu li a {
     display: block; padding: 0.5rem 0; text-decoration: none;
-    font-family: var(--font-display); font-weight: 700; font-size: clamp(2.25rem, 10vw, 3.5rem); line-height: 1.1;
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 700; font-size: clamp(2.25rem, 10vw, 3.5rem); line-height: 1.1;
   }
   .menu li a:hover { color: var(--curtain-lit); }
 

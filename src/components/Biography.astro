@@ -21,15 +21,15 @@ import { bio } from '../content/bio';
   .item { padding-block: 2.5rem; border-top: 1px solid var(--rule); }
   .item:first-child { padding-top: 0; border-top: 0; }
   h3 {
-    font-family: var(--font-display); font-weight: 600; font-size: var(--step-h3);
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 600; font-size: var(--step-h3);
     line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1.25rem; color: var(--bone);
   }
   p { max-width: var(--measure); color: var(--bone); text-wrap: pretty; }
   p :global(strong) { font-weight: 650; }
   /* Títulos y obras como créditos: tipografía distinta, mismo texto */
   p :global(em) {
-    font-family: var(--font-display); font-style: normal; font-weight: 600;
-    font-size: 1.12em; letter-spacing: -0.005em;
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-style: normal; font-weight: 600;
+    font-size: 1em; letter-spacing: 0.03em; font-weight: 700;
   }
 
   @media (min-width: 900px) {

@@ -20,8 +20,8 @@ export const site = {
   nav: [
     { title: 'Inicio', href: '#home' },
     { title: 'Biografía', href: '#biografia' },
-    { title: 'Galería', href: '#galeria' },
     { title: 'Reels', href: '#reels' },
+    { title: 'Galería', href: '#galeria' },
     { title: 'Contacto', href: '#contacto' },
   ],
   sections: {

@@ -45,8 +45,8 @@ const [first, ...rest] = site.name.split(' ');
       linear-gradient(to bottom, color-mix(in srgb, var(--ink) 65%, transparent), transparent 22%);
   }
   h1 {
-    font-family: var(--font-display); font-weight: 700; font-size: var(--step-hero);
-    line-height: 0.86; letter-spacing: -0.03em; text-wrap: balance;
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800; font-size: var(--step-hero);
+    line-height: 0.84; letter-spacing: -0.01em; text-wrap: balance;
   }
   h1 span { display: block; }
   .roles {
@@ -71,7 +71,7 @@ const [first, ...rest] = site.name.split(' ');
         linear-gradient(to top, var(--ink), transparent 30%);
     }
     .copy { position: relative; }
-    h1 span:last-child { margin-left: 0.6ch; }
+    
   }
 
   @media (prefers-reduced-motion: no-preference) {
