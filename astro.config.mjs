@@ -7,7 +7,7 @@ const site = (process.env.SITE_URL ?? 'https://nelsontaffarel.netlify.app').repl
 export default defineConfig({
   site,
   integrations: [sitemap()],
-  build: { inlineStylesheets: 'auto' },
+  build: { inlineStylesheets: 'always' },
   vite: {
     define: { 'import.meta.env.SITE_URL': JSON.stringify(site) },
   },

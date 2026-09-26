@@ -288,9 +288,9 @@ Cada fase termina con `npm run build` limpio y un commit.
 - **Aceptación:** screenshots a 375 px y 1440 px, sin scroll horizontal, contraste AA en todo.
 
 ### Fase 4 — Pulido y a11y
-- [ ] `/impeccable audit` y `/impeccable polish`.
-- [ ] Lightbox accesible (Esc, flechas, foco), aria-labels y skip link.
-- [ ] `prefers-reduced-motion` verificado.
+- [x] `/impeccable audit` y `/impeccable polish`.
+- [x] Lightbox accesible (Esc, flechas, foco), aria-labels y skip link.
+- [x] `prefers-reduced-motion` verificado.
 - **Aceptación:** Lighthouse mobile dentro del presupuesto de §5. Rich Results Test sin errores.
 
 ### Fase 5 — Deploy
