@@ -294,10 +294,10 @@ Cada fase termina con `npm run build` limpio y un commit.
 - **Aceptación:** Lighthouse mobile dentro del presupuesto de §5. Rich Results Test sin errores.
 
 ### Fase 5 — Deploy
-- [ ] `netlify.toml`, variable `SITE_URL` y deploy preview de la rama.
+- [x] `netlify.toml`, variable `SITE_URL` y deploy preview de la rama.
 - [ ] Revisar el preview en un celular real y compartir el link por WhatsApp para verificar la tarjeta OG.
 - [ ] Merge a `main`.
-- [ ] Reemplazar el README de template por uno real.
+- [x] Reemplazar el README de template por uno real.
 
 ---
 

@@ -1,50 +1,28 @@
-# React + TypeScript + Vite
+# Nelson Taffarel — sitio oficial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio de Nelson Taffarel (actor, comediante y locutor). Astro estático, CSS propio y JS mínimo (lightbox, facade de YouTube y menú mobile).
 
-Currently, two official plugins are available:
+## Comandos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Comando | Acción |
+|---|---|
+| `npm install` | Instala dependencias |
+| `npm run dev` | Servidor local en `localhost:4321` |
+| `npm run build` | Genera el sitio en `dist/` |
+| `npm run preview` | Sirve `dist/` |
 
-## Expanding the ESLint configuration
+## Dominio (`SITE_URL`)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+El dominio se parametriza con la variable `SITE_URL` (por defecto `https://nelsontaffarel.netlify.app`). Alimenta `site` en `astro.config.mjs`, el canonical, Open Graph, JSON-LD, `sitemap-index.xml` y `robots.txt`. Para cambiar de dominio: definir `SITE_URL` en Netlify y redeployar.
 
-- Configure the top-level `parserOptions` property like this:
+## Estructura
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `src/content/` — textos, links, galería y reels (fuente única del contenido).
+- `src/assets/photos/`, `src/assets/reels/` — imágenes optimizadas en build (avif/webp).
+- `src/styles/tokens.css`, `src/styles/global.css` — sistema visual (ver `DESIGN.md`).
+- `src/layouts/Base.astro` — `<head>`, SEO y JSON-LD.
+- `PRODUCT.md`, `DESIGN.md`, `PLAN-REWORK-SEO.md` — contexto de producto, diseño y plan.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Contenido pendiente
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Buscar `TODO-CONTENIDO` en `src/` (meta description, alt de fotos, fechas y link de REEL AUDIO).
