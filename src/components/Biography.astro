@@ -11,12 +11,14 @@ import { intro, about } from '../content/bio';
       <p class="sub" set:html={intro[1]} />
     </div>
 
-    <article class="about">
-      <h3>{about.title}</h3>
-      <div class="prose">
-        {about.paragraphs.map((p) => <p set:html={p} />)}
-      </div>
-    </article>
+    {about.map((sec) => (
+      <article class="about">
+        <h3>{sec.title}</h3>
+        <div class="prose">
+          {sec.paragraphs.map((p) => <p set:html={p} />)}
+        </div>
+      </article>
+    ))}
   </div>
 </section>
 
@@ -26,7 +28,7 @@ import { intro, about } from '../content/bio';
   p { color: var(--bone); text-wrap: pretty; }
   p :global(strong) { font-weight: 650; }
 
-  .lead { max-width: 62rem; margin-bottom: 4rem; }
+  .lead { max-width: 62rem; margin-bottom: 3rem; }
   .big {
     font-family: var(--font-display); font-stretch: 85%; font-weight: 600;
     font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1.2; letter-spacing: -0.005em;
@@ -34,12 +36,10 @@ import { intro, about } from '../content/bio';
   .big :global(strong) { font-weight: 800; }
   .sub { margin-top: 1.5rem; max-width: var(--measure); color: var(--bone-dim); }
 
-  .about { padding-top: 2rem; border-top: 1px solid var(--rule); display: grid; gap: 1.25rem; }
+  .about { padding-block: 2rem; border-top: 1px solid var(--rule); display: grid; gap: 1.25rem; }
   h3 { font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800; line-height: 1; font-size: var(--step-h3); }
   .prose { display: grid; gap: 1rem; max-width: var(--measure); }
   @media (min-width: 900px) {
     .about { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem; }
-    .prose { max-width: none; display: block; columns: 2; column-gap: 3rem; }
-    .prose :global(p) { break-inside: avoid; margin-bottom: 1rem; }
   }
 </style>

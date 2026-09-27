@@ -6,6 +6,7 @@ export const site = {
   alternateName: 'Nel Taffarel',
   rolesLine: 'Actor · Actor de voz · Imitador',
   location: 'Gualeguaychú, Entre Ríos',
+  tagline: 'Actor, actor de voz e imitador con trayectoria en teatro, cine y televisión.',
   cta: 'Conóceme',
   description:
     'Sitio oficial de Nelson Taffarel (Nel Taffarel), actor argentino de Gualeguaychú. Trayectoria en teatro, televisión, cine, publicidad, locución e imitaciones.',
@@ -42,5 +43,5 @@ export const site = {
   contactText:
     'Para propuestas de actuación, teatro, televisión, cine, publicidad, locuciones, castings, eventos y proyectos audiovisuales:',
   footerText:
-    'Sitio oficial de Nel Taffarel — Nelson Taffarel. Actor, actor de voz e imitador argentino. Gualeguaychú, Entre Ríos.',
+    'Soy Nel Taffarel, actor, actor de voz e imitador de Gualeguaychú, Entre Ríos. Mi recorrido incluye teatro, cine, televisión, publicidad, locución e imitaciones.',
 } as const;

@@ -1,109 +1,89 @@
-// Texto entregado por Nelson (revisado por él). Los **negritas** originales pasan a <strong>.
+// Texto en primera persona entregado por Nelson (revisado por él). Las negritas son solo de lectura rápida.
 export const intro = [
-  '<strong>Nel Taffarel</strong>, nombre artístico de <strong>Nelson Taffarel</strong>, es actor, actor de voz e imitador argentino, oriundo de <strong>Gualeguaychú, Entre Ríos</strong>.',
-  'Su trayectoria abarca teatro, televisión, cine, cortometrajes, publicidad, locución e imitaciones, con experiencias en algunos de los principales escenarios y medios de la Argentina.',
+  'Soy <strong>Nel Taffarel</strong>. Mi nombre completo es <strong>Nelson Taffarel</strong> y soy actor, actor de voz e imitador, nacido en <strong>Gualeguaychú, Entre Ríos</strong>.',
+  'A lo largo de mi recorrido trabajé en teatro, televisión, cine, publicidad, locución e imitaciones, desarrollando distintos registros de interpretación frente a cámara, sobre el escenario y detrás del micrófono.',
 ];
 
-export const about = {
-  title: 'Sobre mí',
-  paragraphs: [
-    'La actuación y la interpretación forman parte de mi vida desde hace muchos años.',
-    'Mi recorrido comenzó vinculado al teatro y a las imitaciones, y con el tiempo se extendió a la televisión, el cine, la publicidad y el trabajo como actor de voz.',
-    'A lo largo de mi trayectoria tuve la oportunidad de trabajar con reconocidos directores, participar en producciones televisivas y cinematográficas y formar parte de obras presentadas en escenarios como el <strong>Teatro San Martín</strong> y el <strong>Teatro Colón</strong>.',
-    'Cada experiencia fue aportando nuevas herramientas a mi trabajo como intérprete, tanto frente a cámara y sobre un escenario como detrás de un micrófono.',
-  ],
-};
+export interface Section {
+  title: string;
+  paragraphs: string[];
+}
 
-export type Part =
-  | { p: string }
-  | { list: string[] }
-  | { items: { title: string; html: string }[] };
+export const about: Section[] = [
+  {
+    title: 'Mi recorrido',
+    paragraphs: [
+      'A lo largo de los años fui construyendo un camino que combina teatro, cine, televisión, voz, publicidad e imitaciones.',
+      'Cada una de esas experiencias me permitió crecer como actor y desarrollar una mirada versátil sobre la interpretación.',
+    ],
+  },
+  {
+    title: 'Actualmente',
+    paragraphs: [
+      'Actualmente continúo vinculado a la actuación, los castings, la publicidad, la voz y los contenidos audiovisuales, manteniendo activa una trayectoria construida a través de diferentes experiencias y etapas.',
+    ],
+  },
+];
 
 export interface Block {
   id: string;
   title: string;
-  subtitle?: string;
-  parts: Part[];
+  paragraphs: string[];
 }
 
 export const career: Block[] = [
   {
     id: 'teatro',
     title: 'Teatro',
-    subtitle: 'Formación y trayectoria teatral',
-    parts: [
-      { p: 'El teatro constituye una parte fundamental de mi desarrollo como actor.' },
-      { p: 'Tuve la oportunidad de trabajar bajo la dirección de <strong>Agustín Alezzo</strong>, uno de los grandes maestros y directores del teatro argentino.' },
-      { p: 'Bajo su dirección participé en trabajos sobre textos de reconocidos dramaturgos internacionales, entre ellos:' },
-      { list: ['<strong>Central Park West</strong>, de Woody Allen.', '<strong>La colección</strong>, de Harold Pinter.'] },
-      { p: 'También participé en <strong>El reñidero</strong>, obra de Sergio De Cecco, en el ámbito del <strong>Teatro San Martín</strong>.' },
-      { p: 'Mi experiencia teatral incluye además participaciones en producciones realizadas en el <strong>Teatro Colón</strong>, entre ellas:' },
-      { list: ['<strong>Los cuentos de Hoffmann</strong>', '<strong>Atila</strong>'] },
-      { p: 'Estas experiencias fueron fundamentales para mi formación y para desarrollar distintos registros dentro de la actuación.' },
+    paragraphs: [
+      'El teatro ocupa un lugar muy importante en mi formación y en mi desarrollo como actor.',
+      'Tuve la oportunidad de trabajar bajo la dirección de <strong>Agustín Alezzo</strong>, participando en propuestas sobre textos de autores como <strong>Woody Allen</strong> y <strong>Harold Pinter</strong>, entre ellas <strong>Central Park West</strong> y <strong>La colección</strong>.',
+      'También formé parte de <strong>El reñidero</strong>, de Sergio De Cecco, en el ámbito del <strong>Teatro San Martín</strong>, y participé en producciones del <strong>Teatro Colón</strong> como <strong>Los cuentos de Hoffmann</strong> y <strong>Atila</strong>.',
+      'Estas experiencias fueron fundamentales en mi formación y me permitieron desarrollar distintos lenguajes de actuación y trabajo escénico.',
     ],
   },
   {
     id: 'cine',
-    title: 'Cine',
-    parts: [
-      { p: 'Mi trayectoria también incluye participaciones en largometrajes y cortometrajes.' },
-      {
-        items: [
-          { title: 'No te olvides de mí', html: 'Participé como actor en <strong>No te olvides de mí</strong>, película dirigida por <strong>Fernanda Remondo</strong> y protagonizada por <strong>Leonardo Sbaraglia</strong>.' },
-          { title: 'Road Movie', html: 'Participé en <strong>Road Movie</strong>, dirigida por <strong>Dennis Smith</strong>.' },
-          { title: 'Como Susi', html: 'Formé parte del cortometraje <strong>Como Susi</strong>, producción que participó en distintos festivales.' },
-          { title: 'Cortometrajes para Telefe', html: 'También participé como actor en diferentes <strong>cortometrajes realizados para Telefe</strong>, ampliando mi experiencia en distintos formatos audiovisuales.' },
-        ],
-      },
+    title: 'Cine y producciones audiovisuales',
+    paragraphs: [
+      'Mi recorrido audiovisual incluye participaciones en cine, cortometrajes y producciones para televisión.',
+      'Participé en <strong>No te olvides de mí</strong>, dirigida por <strong>Fernanda Remondo</strong> y protagonizada por <strong>Leonardo Sbaraglia</strong>, y en <strong>Road Movie</strong>, dirigida por <strong>Dennis Smith</strong>.',
+      'También formé parte del cortometraje <strong>Como Susi</strong>, presentado en distintos festivales, y participé en cortometrajes realizados para <strong>Telefe</strong>.',
+      'En la producción <strong>Artigas</strong> interpreté al personaje histórico <strong>José Rondeau</strong>, una experiencia muy valiosa dentro de mi carrera.',
     ],
   },
   {
     id: 'television',
     title: 'Televisión',
-    parts: [
-      { p: 'A lo largo de mi carrera participé en diferentes producciones y programas de televisión.' },
-      { p: 'Entre mis trabajos y experiencias se encuentran:' },
-      { list: ['<strong>Videomatch</strong>', 'Trabajos en <strong>Canal 9</strong>', '<strong>Casados con Hijos</strong>', '<strong>Los Únicos</strong>', 'Diferentes participaciones televisivas y audiovisuales'] },
-      { p: 'La televisión me permitió desarrollar distintos registros actorales y complementar la experiencia adquirida previamente en teatro.' },
-    ],
-  },
-  {
-    id: 'artigas',
-    title: 'Artigas',
-    subtitle: 'José Rondeau',
-    parts: [
-      { p: 'Participé en la producción <strong>Artigas</strong>, interpretando al personaje histórico <strong>José Rondeau</strong>.' },
-      { p: 'Este trabajo significó la posibilidad de abordar un personaje histórico y desarrollar una interpretación vinculada a un contexto y una época determinados.' },
+    paragraphs: [
+      'Mi experiencia en televisión incluye participaciones en <strong>Videomatch</strong>, trabajos en <strong>Canal 9</strong>, <strong>Casados con Hijos</strong>, <strong>Los Únicos</strong> y otras producciones audiovisuales.',
+      'La televisión me permitió explorar otros tiempos y registros de actuación, sumando nuevas herramientas a mi trabajo.',
     ],
   },
   {
     id: 'voz',
     title: 'Actor de voz y publicidad',
-    parts: [
-      { p: 'Además de mi trabajo como actor frente a cámara y sobre el escenario, desarrollé una trayectoria como <strong>actor de voz y locutor publicitario</strong>.' },
-      { p: 'Participé con mi voz en diferentes piezas y campañas para marcas y empresas como:' },
-      { list: ['<strong>Ford</strong>', '<strong>Amarok</strong>', '<strong>Stella Artois</strong>', '<strong>YPF</strong>', '<strong>Vinos Los Intocables</strong>', '<strong>Pago Fácil</strong>'] },
-      { p: 'El trabajo de voz me permitió explorar otros registros interpretativos, combinando actuación, locución, creación de personajes y comunicación publicitaria.' },
+    paragraphs: [
+      'Además de mi trabajo como actor, desarrollé una faceta profesional como <strong>actor de voz y locutor publicitario</strong>.',
+      'Participé en piezas y campañas vinculadas a marcas como <strong>Ford</strong>, <strong>Amarok</strong>, <strong>Stella Artois</strong>, <strong>YPF</strong>, <strong>Vinos Los Intocables</strong> y <strong>Pago Fácil</strong>.',
+      'El trabajo de voz me permitió seguir ampliando mis recursos expresivos y explorar nuevas formas de interpretación.',
     ],
   },
   {
     id: 'imitaciones',
     title: 'Imitaciones',
-    parts: [
-      { p: 'Las imitaciones forman parte de mis comienzos y siguen siendo una de las facetas más personales de mi trabajo artístico.' },
-      { p: 'Desde joven desarrollé la observación de voces, gestos y personalidades, transformándolas en personajes y contenidos humorísticos.' },
-      { p: 'Con el tiempo, esta capacidad también se integró a mi trabajo profesional en televisión, actuación y voz.' },
-      { p: 'Actualmente continúo desarrollando imitaciones y contenidos vinculados al humor y la interpretación.' },
+    paragraphs: [
+      'Las imitaciones forman parte de mis comienzos y siguen siendo una de las facetas más personales de mi trabajo.',
+      'A través de la observación de voces, gestos y personajes, fui desarrollando una forma de interpretación vinculada al humor, la caracterización y la creación de personajes.',
+      'Con el tiempo, esta experiencia también se integró a mi trabajo en televisión, publicidad y actuación de voz.',
     ],
   },
   {
     id: 'ecuestre',
-    title: 'Trayectoria ecuestre',
-    parts: [
-      { p: 'Además de mi actividad artística, desarrollé durante años una relación muy cercana con el mundo de los caballos.' },
-      { p: 'Tuve experiencia en el <strong>cuidado y manejo de caballos</strong>, adquiriendo conocimientos vinculados a la actividad ecuestre.' },
-      { p: 'También desarrollé actividad deportiva como <strong>jugador de polo</strong>.' },
-      { p: 'Esta experiencia forma parte de mi recorrido personal y constituye otra faceta de una vida vinculada a diferentes disciplinas, tanto artísticas como deportivas.' },
+    title: 'Mundo ecuestre',
+    paragraphs: [
+      'Fuera del ámbito artístico, también desarrollé una relación muy cercana con el mundo de los caballos.',
+      'Cuento con experiencia en <strong>cuidado y manejo de caballos</strong> y también practiqué <strong>polo</strong>, una disciplina que forma parte de otra de mis pasiones.',
     ],
   },
 ];

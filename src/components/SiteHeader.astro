@@ -19,12 +19,15 @@ import { site } from '../content/site';
     height: var(--header-h);
     display: flex; align-items: center; justify-content: space-between;
     padding-inline: var(--gutter);
-    background: color-mix(in srgb, var(--ink) 0%, transparent);
+    background-color: rgb(15 14 12 / 0);
   }
   /* Transparente sobre el hero; se oscurece al scrollear (CSS puro). Sin soporte: fondo sólido. */
   @supports (animation-timeline: scroll()) {
-    .site-header { animation: header-in linear both; animation-timeline: scroll(root); animation-range: 0 40vh; }
-    @keyframes header-in { to { background: var(--ink); box-shadow: 0 1px 0 var(--rule); } }
+    .site-header { animation-name: header-in; animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: scroll(root); animation-range: 0 40vh; }
+    @keyframes header-in {
+      from { background-color: rgb(15 14 12 / 0); box-shadow: 0 1px 0 rgb(42 39 35 / 0); }
+      to { background-color: rgb(15 14 12 / 1); box-shadow: 0 1px 0 rgb(42 39 35 / 1); }
+    }
   }
   @supports not (animation-timeline: scroll()) { .site-header { background: var(--ink); } }
 

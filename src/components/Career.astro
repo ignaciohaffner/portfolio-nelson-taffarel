@@ -10,23 +10,9 @@ import { career } from '../content/bio';
       <article class="block" id={block.id}>
         <header>
           <h3>{block.title}</h3>
-          {block.subtitle && <p class="subtitle">{block.subtitle}</p>}
         </header>
         <div class="body">
-          {block.parts.map((part) => {
-            if ('p' in part) return <p set:html={part.p} />;
-            if ('list' in part) return <ul class="credits">{part.list.map((li) => <li set:html={li} />)}</ul>;
-            return (
-              <div class="items">
-                {part.items.map((it) => (
-                  <div class="item">
-                    <h4>{it.title}</h4>
-                    <p set:html={it.html} />
-                  </div>
-                ))}
-              </div>
-            );
-          })}
+          {block.paragraphs.map((p) => <p set:html={p} />)}
         </div>
       </article>
     ))}
@@ -39,7 +25,6 @@ import { career } from '../content/bio';
   .block { display: grid; gap: 1.5rem; padding-block: 2.5rem; border-top: 1px solid var(--rule); }
   h3, h4 { font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800; line-height: 1; }
   h3 { font-size: var(--step-h3); }
-  .subtitle { margin-top: 0.75rem; font-size: var(--step-small); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-dim); }
   .body { display: grid; gap: 1.1rem; max-width: var(--measure); align-content: start; }
   .body p { color: var(--bone); text-wrap: pretty; }
   .body :global(strong) { font-weight: 650; }
