@@ -6,17 +6,14 @@ import { gallery } from '../content/gallery';
 const full = await Promise.all(
   gallery.map((p) => getImage({ src: p.src, format: 'webp', width: p.src.width, quality: 85 })),
 );
-const fullAfter = await Promise.all(
-  gallery.map((p) => (p.after ? getImage({ src: p.after, format: 'webp', width: p.after.width, quality: 85 }) : undefined)),
-);
 ---
 <section id="galeria" aria-labelledby="galeria-titulo">
   <h2 id="galeria-titulo">{site.sections.gallery}</h2>
   <p class="intro">{site.galleryText}</p>
   <ul class="grid">
     {gallery.map((photo, i) => (
-      <li class:list={['cell', `c${i + 1}`, { 'has-after': !!photo.after }]} style={`--ar:${photo.src.width}/${photo.src.height}`}>
-        <button type="button" data-open={i} data-full={full[i].src} data-after={fullAfter[i]?.src} data-alt={photo.alt} aria-label={`Ampliar foto ${i + 1} de ${gallery.length}`}>
+      <li class={`cell c${i + 1}`} style={`--ar:${photo.src.width}/${photo.src.height}`}>
+        <button type="button" data-open={i} data-full={full[i].src} data-alt={photo.alt} aria-label={`Ampliar foto ${i + 1} de ${gallery.length}`}>
           <Picture
             src={photo.src}
             alt={photo.alt}
@@ -27,12 +24,6 @@ const fullAfter = await Promise.all(
             loading="lazy"
             decoding="async"
           />
-          {photo.after && (
-            <span class="after" aria-hidden="true">
-              <Picture src={photo.after} alt="" formats={['avif', 'webp']} fallbackFormat="jpeg" widths={[400, 600]} sizes="(min-width: 900px) 40vw, 50vw" loading="lazy" decoding="async" />
-              <span class="tag">Nelson</span>
-            </span>
-          )}
         </button>
       </li>
     ))}
@@ -40,7 +31,6 @@ const fullAfter = await Promise.all(
 
   <dialog class="lightbox" aria-label="Galería ampliada">
     <button type="button" class="lb-close" data-close aria-label="Cerrar">Cerrar</button>
-    <button type="button" class="lb-toggle" data-toggle hidden>Ver a Nelson</button>
     <button type="button" class="lb-nav lb-prev" data-step="-1" aria-label="Foto anterior">Anterior</button>
     <button type="button" class="lb-nav lb-next" data-step="1" aria-label="Foto siguiente">Siguiente</button>
     <p class="lb-count" aria-live="polite"></p>
@@ -73,17 +63,6 @@ const fullAfter = await Promise.all(
     color: var(--bone); font: inherit; font-size: var(--step-small); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
   }
   .lightbox button:hover { border-color: var(--curtain-lit); }
-
-  /* Chiche antes/después (features.beforeAfter): borrar este bloque + .after en el markup = revertir. */
-  .cell button { position: relative; }
-  .after { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s var(--ease-out); pointer-events: none; }
-  .after :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; filter: contrast(1.05); }
-  .tag { position: absolute; left: 0.5rem; bottom: 0.5rem; padding: 0.25rem 0.5rem; background: var(--ink); color: var(--bone); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
-  @media (hover: hover) {
-    .has-after button:hover .after, .has-after button:focus-visible .after { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) { .after { transition: none; } }
-  .lb-toggle { top: 1rem; left: 1rem; }
   .lb-close { top: 1rem; right: 1rem; }
   .lb-nav { bottom: 1.25rem; }
   .lb-prev { left: 1rem; }
@@ -108,17 +87,12 @@ const fullAfter = await Promise.all(
     const img = document.createElement('img');
     dlg.prepend(img);
     const count = dlg.querySelector<HTMLElement>('.lb-count')!;
-    const toggle = dlg.querySelector<HTMLButtonElement>('[data-toggle]')!;
     let index = 0;
-    let showAfter = false;
 
-    const show = (i: number, after = false) => {
+    const show = (i: number) => {
       index = (i + buttons.length) % buttons.length;
       const b = buttons[index];
-      showAfter = after && !!b.dataset.after;
-      toggle.hidden = !b.dataset.after;
-      toggle.textContent = showAfter ? 'Ver personaje' : 'Ver a Nelson';
-      img.src = showAfter ? b.dataset.after! : b.dataset.full!;
+      img.src = b.dataset.full!;
       img.alt = b.dataset.alt ?? '';
       count.textContent = `${index + 1} / ${buttons.length}`;
     };
@@ -133,7 +107,6 @@ const fullAfter = await Promise.all(
     dlg.addEventListener('click', (e) => {
       const t = e.target as HTMLElement;
       if (t.closest('[data-close]') || t === dlg || t === img) dlg.close();
-      if (t.closest('[data-toggle]')) show(index, !showAfter);
       const step = t.closest<HTMLElement>('[data-step]');
       if (step) show(index + Number(step.dataset.step));
     });
