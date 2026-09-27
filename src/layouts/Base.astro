@@ -1,14 +1,13 @@
 ---
 import { site, SITE_URL } from '../content/site';
 import { reels } from '../content/reels';
-import { bio } from '../content/bio';
 import { heroPhoto } from '../content/gallery';
 import displayFont from '../../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 import '../styles/tokens.css';
 import '../styles/global.css';
 
-const title = 'Nelson Taffarel — Actor, comediante y locutor | Sitio oficial';
-const ogTitle = 'Nelson Taffarel — Actor, comediante y locutor';
+const title = 'Nelson Taffarel (Nel Taffarel) | Actor argentino, actor de voz e imitador';
+const ogTitle = 'Nelson Taffarel (Nel Taffarel) — Actor, actor de voz e imitador';
 const description = site.description; // TODO-CONTENIDO
 const url = `${SITE_URL}/`;
 const ogImage = `${SITE_URL}/og-nelson-taffarel.jpg`;
@@ -18,6 +17,7 @@ const person = {
   '@type': 'Person',
   '@id': `${url}#nelson-taffarel`,
   name: site.name,
+  alternateName: [site.alternateName],
   givenName: 'Nelson',
   familyName: 'Taffarel',
   jobTitle: [...site.roles],
@@ -25,16 +25,16 @@ const person = {
   image: ogImage,
   url,
   sameAs,
-  description,
-  knowsAbout: ['Actuación', 'Danza', 'Equitación', 'Rugby', 'Golf', 'Ashtanga Yoga'],
-  alumniOf: { '@type': 'EducationalOrganization', name: 'Taller de arte dramático de Agustín Alezzo' },
+  description: site.shortBio,
+  homeLocation: { '@type': 'Place', name: 'Gualeguaychú, Entre Ríos, Argentina' },
+  knowsAbout: ['Actuación', 'Teatro', 'Cine', 'Televisión', 'Locución', 'Imitaciones', 'Equitación', 'Polo'],
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     person,
-    { '@type': 'WebSite', '@id': `${url}#website`, name: site.name, url, inLanguage: 'es-AR', publisher: { '@id': person['@id'] } },
+    { '@type': 'WebSite', '@id': `${url}#website`, name: site.name, alternateName: site.alternateName, url, inLanguage: 'es-AR', publisher: { '@id': person['@id'] } },
     {
       '@type': 'ProfilePage',
       '@id': `${url}#profile`,
@@ -48,7 +48,7 @@ const jsonLd = {
       '@type': 'VideoObject',
       name: `${site.name} — ${r.title}`,
       // TODO-CONTENIDO: descripción real de cada reel
-      description: `${r.title} de ${site.name}, actor, comediante y locutor.`,
+      description: `${r.title} de ${site.name} (${site.alternateName}), actor, actor de voz e imitador.`,
       thumbnailUrl: `https://i.ytimg.com/vi/${r.id}/hqdefault.jpg`,
       embedUrl: `https://www.youtube-nocookie.com/embed/${r.id}`,
       contentUrl: `https://www.youtube.com/watch?v=${r.id}`,

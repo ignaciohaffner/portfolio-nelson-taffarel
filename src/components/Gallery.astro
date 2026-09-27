@@ -9,6 +9,7 @@ const full = await Promise.all(
 ---
 <section id="galeria" aria-labelledby="galeria-titulo">
   <h2 id="galeria-titulo">{site.sections.gallery}</h2>
+  <p class="intro">{site.galleryText}</p>
   <ul class="grid">
     {gallery.map((photo, i) => (
       <li class={`cell c${i + 1}`} style={`--ar:${photo.src.width}/${photo.src.height}`}>
@@ -37,6 +38,7 @@ const full = await Promise.all(
 </section>
 
 <style>
+  .intro { max-width: var(--measure); margin-top: 1.5rem; color: var(--bone-dim); }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: clamp(1.5rem, 4vw, 2.5rem); max-width: 64rem; }
   .cell { aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink-2); }
   .cell.c9 { grid-column: span 2; aspect-ratio: 16 / 7; }

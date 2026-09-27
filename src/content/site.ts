@@ -2,12 +2,15 @@ export const SITE_URL = (import.meta.env.SITE_URL ?? 'https://nelsontaffarel.net
 
 export const site = {
   name: 'Nelson Taffarel',
-  roles: ['Actor', 'Comediante', 'Locutor'],
-  rolesLine: 'Actor • Comediante • Locutor',
+  roles: ['Actor', 'Actor de voz', 'Imitador'],
+  alternateName: 'Nel Taffarel',
+  rolesLine: 'Actor · Actor de voz · Imitador',
+  location: 'Gualeguaychú, Entre Ríos',
   cta: 'Conóceme',
-  // TODO-CONTENIDO: validar con Nelson (≈150 caracteres)
   description:
-    'Sitio oficial de Nelson Taffarel, actor argentino formado con Agustín Alezzo. TV (Casi Ángeles, Los Roldán), teatro, publicidad y reels.',
+    'Sitio oficial de Nelson Taffarel (Nel Taffarel), actor argentino de Gualeguaychú. Trayectoria en teatro, televisión, cine, publicidad, locución e imitaciones.',
+  shortBio:
+    'Nel Taffarel, nombre artístico de Nelson Taffarel, es un actor, actor de voz e imitador argentino de Gualeguaychú, Entre Ríos. Su trayectoria abarca teatro, televisión, cine, publicidad y locución. Trabajó bajo la dirección de Agustín Alezzo, participó en producciones del Teatro San Martín y el Teatro Colón y desarrolló trabajos en televisión, cine y campañas publicitarias.',
   links: {
     instagram: 'https://www.instagram.com/neltaffarel/',
     vimeo: 'https://vimeo.com/nelsontaffarel',
@@ -20,14 +23,24 @@ export const site = {
   nav: [
     { title: 'Inicio', href: '#home' },
     { title: 'Biografía', href: '#biografia' },
-    { title: 'Reels', href: '#reels' },
+    { title: 'Trayectoria', href: '#trayectoria' },
+    { title: 'Videos', href: '#videos' },
     { title: 'Galería', href: '#galeria' },
     { title: 'Contacto', href: '#contacto' },
   ],
   sections: {
     bio: 'Biografía',
+    career: 'Trayectoria',
+    reels: 'Videos',
     gallery: 'Galería',
-    reels: 'Reels',
     contact: 'Contacto',
   },
+  videosText:
+    'Una selección de trabajos, imitaciones, participaciones televisivas, material audiovisual y distintos momentos de la trayectoria artística de <strong>Nel Taffarel</strong>.',
+  galleryText:
+    'Imágenes de trabajos actorales, teatro, televisión, cine, publicidad y diferentes momentos de la trayectoria de Nel Taffarel.',
+  contactText:
+    'Para propuestas de actuación, teatro, televisión, cine, publicidad, locuciones, castings, eventos y proyectos audiovisuales:',
+  footerText:
+    'Sitio oficial de Nel Taffarel — Nelson Taffarel. Actor, actor de voz e imitador argentino. Gualeguaychú, Entre Ríos.',
 } as const;

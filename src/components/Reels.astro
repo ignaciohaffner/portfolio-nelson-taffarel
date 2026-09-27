@@ -8,8 +8,9 @@ const thumbs = import.meta.glob<{ default: ImageMetadata }>('../assets/reels/*.j
 const thumbOf = (id: string) => thumbs[`../assets/reels/${id}.jpg`].default;
 const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
 ---
-<section id="reels" aria-labelledby="reels-titulo" data-reels>
-  <h2 id="reels-titulo">{site.sections.reels}</h2>
+<section id="videos" aria-labelledby="videos-titulo" data-reels>
+  <h2 id="videos-titulo">{site.sections.reels}</h2>
+  <p class="intro" set:html={site.videosText} />
 
   <div class="wrap">
   <div class="reel-stage">
@@ -43,7 +44,9 @@ const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
   </div>
 </section>
 <style>
-  .wrap { max-width: 90rem; margin-inline: auto; display: grid; gap: 2.5rem; margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+  .intro { max-width: var(--measure); margin-top: 1.5rem; color: var(--bone-dim); }
+  .intro :global(strong) { color: var(--bone); font-weight: 650; }
+  .wrap { max-width: 90rem; margin-inline: auto; display: grid; gap: 2.5rem; margin-top: clamp(1.75rem, 4vw, 3rem); }
   .reel-stage { position: relative; aspect-ratio: 16 / 9; background: var(--ink-2); }
   .reel-panel, .reel-facade { position: absolute; inset: 0; display: block; }
   .reel-panel[hidden] { display: none; }

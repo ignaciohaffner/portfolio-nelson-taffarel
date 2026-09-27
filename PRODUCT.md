@@ -12,7 +12,7 @@ Astro estático (decidido por el usuario en PLAN-REWORK-SEO.md §2), CSS propio 
 
 ## Users
 
-Portfolio personal de Nelson Taffarel, actor argentino. Audiencia confirmada por el usuario: directores de casting, productoras, agencias de representación y público general. Llegan desde Google (búsqueda por nombre), Instagram o un link compartido por WhatsApp, casi siempre en el celular, para confirmar quién es, ver su trabajo (reels, fotos) y saber cómo contactarlo.
+Portfolio personal de Nelson Taffarel (nombre artístico Nel Taffarel), actor, actor de voz e imitador argentino de Gualeguaychú. Audiencia confirmada por el usuario: directores de casting, productoras, agencias de representación y público general. Llegan desde Google (búsqueda por nombre), Instagram o un link compartido por WhatsApp, casi siempre en el celular, para confirmar quién es, ver su trabajo (reels, fotos) y saber cómo contactarlo.
 
 ## Product Purpose
 
@@ -28,7 +28,8 @@ Una sola página con anclas: Inicio, Biografía, Galería, Reels, Contacto. Los 
 
 ## Capabilities and Constraints
 
-- El contenido (bio, títulos, links, crédito "Hecho por IGNACIO HAFFNER") no se modifica; se copia verbatim.
+- El texto vigente es el entregado y revisado por Nelson (reemplazó la bio original). Se copia verbatim en `src/content/bio.ts`; el crédito "Hecho por IGNACIO HAFFNER" se mantiene.
+- El sitio debe encontrarse por "Nelson Taffarel" y por "Nel Taffarel" (h1 = Nelson; alias en title, JSON-LD y bio).
 - Los 4 bloques de la biografía siempre visibles en el HTML (sin carrusel). Un solo `<h1>`.
 - Sin toggle de tema: un único tema oscuro.
 - Presupuesto: Lighthouse mobile ~100 en las 4 categorías, JS de cliente < 10 KB, primera carga < 500 KB.
