@@ -1,5 +1,6 @@
 ---
 import { features } from '../content/site';
+import SideNav from '../components/SideNav.astro';
 import BackToTop from '../components/BackToTop.astro';
 import Base from '../layouts/Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
@@ -23,5 +24,6 @@ import SiteFooter from '../components/SiteFooter.astro';
     <Contact />
   </main>
   <SiteFooter />
+  {features.sideNav && <SideNav />}
   {features.backToTop && <BackToTop />}
 </Base>

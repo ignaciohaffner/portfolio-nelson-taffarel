@@ -5,7 +5,7 @@ import { site } from '../content/site';
   <a class="brand" href="#home">{site.name}</a>
   <nav aria-label="Principal">
     <details class="menu">
-      <summary>Menú</summary>
+      <summary><span class="t-open">Menú</span><span class="t-close">Cerrar</span></summary>
       <ul>
         {site.nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
       </ul>
@@ -56,6 +56,8 @@ import { site } from '../content/site';
     padding: 0.875rem 0 0.875rem 1rem;
   }
   summary::-webkit-details-marker { display: none; }
+  .t-close, .menu[open] .t-open { display: none; }
+  .menu[open] .t-close { display: inline; }
   .menu ul { display: none; }
   .menu[open] ul {
     display: grid; gap: 0.25rem;

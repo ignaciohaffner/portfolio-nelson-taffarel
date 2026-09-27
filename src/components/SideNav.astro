@@ -1,0 +1,62 @@
+---
+// Chiche: índice lateral con la sección activa (features.sideNav). Solo desktop.
+// Borrar este componente + su uso en index.astro = revertir.
+import { site } from '../content/site';
+---
+<nav class="side-nav" aria-label="Secciones">
+  <ul>
+    {site.nav.map((item) => (
+      <li>
+        <a href={item.href} data-section={item.href.slice(1)}>
+          <span class="label">{item.title}</span>
+          <span class="dot" aria-hidden="true"></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .side-nav { display: none; }
+  @media (min-width: 1100px) {
+    .side-nav {
+      display: block; position: fixed; z-index: 55; right: 1.25rem; top: 50%; translate: 0 -50%;
+      padding: 0.5rem 0.25rem; background: var(--ink); border: 1px solid var(--rule); border-radius: 999px;
+    }
+    ul { display: grid; gap: 0.125rem; }
+    a { position: relative; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; text-decoration: none; }
+    .dot {
+      width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--bone-dim);
+      transition: scale 0.35s var(--ease-out), background-color 0.3s var(--ease-out);
+    }
+    a:hover .dot, a:focus-visible .dot { background: var(--bone); }
+    a[aria-current='true'] .dot { scale: 1 2.6; background: var(--curtain-lit); }
+    .label {
+      position: absolute; right: calc(100% + 0.5rem); top: 50%; translate: 0.35rem -50%;
+      padding: 0.3rem 0.6rem; white-space: nowrap; background: var(--bone); color: var(--ink);
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s var(--ease-out), translate 0.2s var(--ease-out);
+    }
+    a:hover .label, a:focus-visible .label { opacity: 1; translate: 0 -50%; }
+    @media (prefers-reduced-motion: reduce) { .dot, .label { transition: none; } }
+  }
+</style>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.side-nav a[data-section]')];
+  const map = new Map(links.map((a) => [a.dataset.section!, a]));
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        links.forEach((a) => a.removeAttribute('aria-current'));
+        map.get(e.target.id)?.setAttribute('aria-current', 'true');
+      }
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  map.forEach((_, id) => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+</script>
