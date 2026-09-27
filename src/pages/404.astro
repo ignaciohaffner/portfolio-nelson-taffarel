@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+---
+<Base title={`404 — Página no encontrada | ${site.name}`} noindex>
+  <main class="nf">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Esta escena no existe</h1>
+    <p class="msg">La página que buscás no está en el reparto. Puede que el link esté mal escrito o que ya no exista.</p>
+    <a class="back" href="/">Volver al inicio</a>
+  </main>
+</Base>
+
+<style>
+  .nf {
+    min-height: 100svh; display: grid; align-content: center; justify-items: start; gap: 1.25rem;
+    padding: 4rem var(--gutter); position: relative; overflow: clip;
+  }
+  /* barras de cine, como en el hero */
+  .nf::before, .nf::after { content: ''; position: absolute; left: 0; right: 0; height: clamp(1.75rem, 6svh, 4.25rem); background: #000; }
+  .nf::before { top: 0; }
+  .nf::after { bottom: 0; }
+  .code {
+    font-family: var(--font-display); font-stretch: 70%; font-weight: 800; line-height: 0.8;
+    font-size: clamp(9rem, 38vw, 30rem); letter-spacing: -0.02em; color: var(--curtain);
+  }
+  h1 {
+    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800;
+    font-size: var(--step-h2); line-height: 0.98; text-wrap: balance;
+  }
+  .msg { max-width: var(--measure); color: var(--bone-dim); }
+  .back {
+    display: inline-block; margin-top: 1rem; padding: 0.75rem 0;
+    font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+    text-decoration: underline; text-decoration-color: var(--curtain-lit); text-decoration-thickness: 3px;
+    text-underline-offset: 0.7em; transition: text-underline-offset 0.4s var(--ease-out);
+  }
+  .back:hover { text-underline-offset: 0.35em; }
+</style>

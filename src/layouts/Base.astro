@@ -6,7 +6,8 @@ import displayFont from '../../node_modules/@fontsource-variable/archivo/files/a
 import '../styles/tokens.css';
 import '../styles/global.css';
 
-const title = 'Nelson Taffarel (Nel Taffarel) | Actor argentino, actor de voz e imitador';
+const { title: pageTitle, noindex = false } = Astro.props;
+const title = pageTitle ?? 'Nelson Taffarel (Nel Taffarel) | Actor argentino, actor de voz e imitador';
 const ogTitle = 'Nelson Taffarel (Nel Taffarel) — Actor, actor de voz e imitador';
 const description = site.description; // TODO-CONTENIDO
 const url = `${SITE_URL}/`;
@@ -65,8 +66,8 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={url} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    {!noindex && <link rel="canonical" href={url} />}
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
 
     <meta property="og:type" content="profile" />
     <meta property="og:locale" content="es_AR" />
@@ -94,7 +95,7 @@ const jsonLd = {
 
     <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
     <slot name="head" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    {!noindex && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <!--
