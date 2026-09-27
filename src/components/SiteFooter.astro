@@ -3,16 +3,17 @@ import { site } from '../content/site';
 ---
 <footer class="site-footer">
   <p class="about">{site.footerText}</p>
-  <p>
+  <p class="credit">
     {site.credit.prefix}{' '}
     <a href={site.credit.url} target="_blank" rel="noopener">{site.credit.name}</a>
   </p>
 </footer>
 
 <style>
-  .site-footer { padding: 2rem var(--gutter) 3rem; text-align: center; border-top: 1px solid var(--rule); }
+  .site-footer { padding: 2rem var(--gutter) 1.5rem; text-align: center; border-top: 1px solid var(--rule); }
   .about { max-width: 46rem; margin: 0 auto 1.25rem; text-transform: none; letter-spacing: 0.02em; font-size: 0.875rem; line-height: 1.5; }
   p { font-size: var(--step-small); letter-spacing: 0.2em; text-transform: uppercase; color: var(--bone-dim); }
-  a { color: var(--bone); padding-block: 0.75rem; display: inline-block; }
-  a:hover { color: var(--curtain-lit); }
+  .credit { font-size: 0.6875rem; letter-spacing: 0.14em; }
+  a { color: var(--bone-dim); padding-block: 0.75rem; display: inline-block; text-decoration-color: var(--rule); }
+  a:hover { color: var(--bone); text-decoration-color: var(--curtain-lit); }
 </style>
