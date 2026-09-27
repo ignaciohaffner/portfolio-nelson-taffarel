@@ -3,7 +3,6 @@ export const SITE_URL = (import.meta.env.SITE_URL ?? 'https://nelsontaffarel.net
 // Interruptores de los "chiches": en false desaparecen sin tocar nada más.
 export const features = {
   filmLook: true, // grano de película + barras de cine en el hero
-  curtain: true, // telón rojo que se abre al cargar
   backToTop: true, // botón claqueta para volver arriba
 } as const;
 
