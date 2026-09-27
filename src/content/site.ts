@@ -1,8 +1,10 @@
 export const SITE_URL = (import.meta.env.SITE_URL ?? 'https://nelsontaffarel.netlify.app').replace(/\/$/, '');
 
-// Interruptor del "chiche": en false desaparece sin tocar nada más.
+// Interruptores de los "chiches": en false desaparecen sin tocar nada más.
 export const features = {
   filmLook: true, // grano de película + barras de cine en el hero
+  curtain: true, // telón rojo que se abre al cargar
+  backToTop: true, // botón claqueta para volver arriba
 } as const;
 
 export const site = {

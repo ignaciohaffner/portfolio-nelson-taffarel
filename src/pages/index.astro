@@ -1,4 +1,6 @@
 ---
+import { features } from '../content/site';
+import Curtain from '../components/Curtain.astro';
 import Base from '../layouts/Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Hero from '../components/Hero.astro';
@@ -10,6 +12,7 @@ import Contact from '../components/Contact.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 ---
 <Base>
+  {features.curtain && <Curtain />}
   <a class="skip-link" href="#biografia">Saltar al contenido</a>
   <SiteHeader />
   <main>
