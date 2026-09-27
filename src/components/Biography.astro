@@ -34,6 +34,11 @@ import { intro, about } from '../content/bio';
     font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1.2; letter-spacing: -0.005em;
   }
   .big :global(strong) { font-weight: 800; }
+  .prose :global(a) {
+    text-decoration: underline; text-decoration-color: var(--curtain-lit); text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em; transition: text-underline-offset 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  }
+  .prose :global(a:hover) { text-underline-offset: 0.12em; color: var(--curtain-lit); }
   .sub { margin-top: 1.5rem; max-width: var(--measure); color: var(--bone-dim); }
 
   .about { padding-block: 2rem; border-top: 1px solid var(--rule); display: grid; gap: 1.25rem; }

@@ -13,7 +13,7 @@ export const about: Section[] = [
   {
     title: 'Mi recorrido',
     paragraphs: [
-      'A lo largo de los años fui construyendo un camino que combina teatro, cine, televisión, voz, publicidad e imitaciones.',
+      'A lo largo de los años fui construyendo un camino que combina <a href="#teatro">teatro</a>, <a href="#cine">cine</a>, <a href="#television">televisión</a>, <a href="#voz">voz</a>, <a href="#voz">publicidad</a> e <a href="#imitaciones">imitaciones</a>.',
       'Cada una de esas experiencias me permitió crecer como actor y desarrollar una mirada versátil sobre la interpretación.',
     ],
   },
