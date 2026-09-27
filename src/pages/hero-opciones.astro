@@ -1,0 +1,286 @@
+---
+// PÁGINA TEMPORAL: 5 propuestas de hero para elegir. Se borra al decidir.
+import { Picture } from 'astro:assets';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+import { heroPhoto, gallery } from '../content/gallery';
+const [first, last] = site.name.split(' ');
+const strip = gallery;
+---
+<Base title="Opciones de hero" noindex>
+  <nav class="picker" aria-label="Opciones de hero">
+    <a href="#o1">1 · Texto en filas</a><a href="#o2">2 · Transformista</a><a href="#o3">3 · Póster</a><a href="#o4">4 · Claqueta</a><a href="#o5">5 · Tira de película</a><a href="#o6">6 · Ventana + zoom</a><a href="#o7">7 · Vertical</a><a href="#o8">8 · Personajes en el nombre</a><a href="#o9">9 · Hoja de contactos</a>
+  </nav>
+
+  <!-- 1 · TEXTO EN FILAS: el nombre como textura recortada, retrato al centro -->
+  <section id="o1" class="h o1">
+    <div class="rows" aria-hidden="true">
+      {[0, 1, 2, 3].map((i) => (
+        <div class={`row ${i % 2 ? 'out' : ''} ${i % 2 ? 'rev' : ''}`}>
+          <div class="track">{Array.from({ length: 8 }).map(() => <span>NELSON TAFFAREL&nbsp;—&nbsp;</span>)}</div>
+        </div>
+      ))}
+    </div>
+    <figure class="portrait">
+      <Picture src={heroPhoto.src} alt={heroPhoto.alt} formats={['avif', 'webp']} widths={[480, 640]} sizes="30vw" loading="lazy" />
+    </figure>
+    <div class="copy">
+      <h1 class="sr">{site.name}</h1>
+      <p class="roles">{site.rolesLine}</p>
+      <p class="loc">{site.location}</p>
+      <a class="cta" href="#biografia">{site.cta}</a>
+    </div>
+  </section>
+
+  <!-- 2 · TRANSFORMISTA: el ancho de cada letra respira (eje wdth de la variable) -->
+  <section id="o2" class="h o2">
+    <figure class="ph"><Picture src={heroPhoto.src} alt="" formats={['avif', 'webp']} widths={[480, 640]} sizes="40vw" loading="lazy" /></figure>
+    <div class="copy">
+      <h1 aria-label={site.name}>
+        <span class="line" aria-hidden="true">{[...first].map((c, i) => <b style={`--i:${i}`}>{c}</b>)}</span>
+        <span class="line" aria-hidden="true">{[...last].map((c, i) => <b style={`--i:${i + 3}`}>{c}</b>)}</span>
+      </h1>
+      <p class="roles">{site.rolesLine}</p>
+      <p class="tag">{site.tagline}</p>
+      <a class="cta" href="#biografia">{site.cta}</a>
+    </div>
+  </section>
+
+  <!-- 3 · PÓSTER: serif itálica gigante que cruza el retrato, bloque de créditos abajo -->
+  <section id="o3" class="h o3">
+    <figure class="strip"><Picture src={heroPhoto.src} alt={heroPhoto.alt} formats={['avif', 'webp']} widths={[480, 640]} sizes="640px" loading="lazy" /></figure>
+    <div class="title">
+      <h1><span class="a">{first}</span><span class="b">{last}</span></h1>
+    </div>
+    <div class="billing">
+      <p class="bl">{site.rolesLine}</p>
+      <p class="bl">{site.location}</p>
+      <p class="bl">{site.tagline}</p>
+    </div>
+    <a class="cta" href="#biografia">{site.cta}</a>
+  </section>
+
+  <!-- 4 · CLAQUETA: el hero es una claqueta con los datos reales -->
+  <section id="o4" class="h o4">
+    <div class="slate">
+      <div class="stick"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="board">
+        <figure class="frame"><Picture src={heroPhoto.src} alt={heroPhoto.alt} formats={['avif', 'webp']} widths={[480, 640]} sizes="30vw" loading="lazy" /></figure>
+        <div class="fields">
+          <div class="f wide"><small>Actor</small><h1>{site.name}</h1></div>
+          <div class="f"><small>Rol</small><p>{site.rolesLine}</p></div>
+          <div class="f"><small>Locación</small><p>{site.location}</p></div>
+          <div class="f"><small>Escena</small><p class="n">1</p></div>
+          <div class="f"><small>Toma</small><p class="n">1</p></div>
+          <a class="f cta-cell" href="#biografia">{site.cta}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · TIRA DE PELÍCULA: los personajes pasan como fotogramas, el nombre manda al centro -->
+  <section id="o5" class="h o5">
+    <div class="film top" aria-hidden="true"><div class="reel">{[0, 1].map(() => strip.map((p) => <div class="fr"><Picture src={p.src} alt="" formats={['avif', 'webp']} widths={[240, 400]} sizes="240px" loading="lazy" /></div>))}</div></div>
+    <div class="center">
+      <h1><span>{first}</span><span>{last}</span></h1>
+      <p class="roles">{site.rolesLine}</p>
+      <a class="cta" href="#biografia">{site.cta}</a>
+    </div>
+    <div class="film bottom" aria-hidden="true"><div class="reel rev">{[0, 1].map(() => [...strip].reverse().map((p) => <div class="fr"><Picture src={p.src} alt="" formats={['avif', 'webp']} widths={[240, 400]} sizes="240px" loading="lazy" /></div>))}</div></div>
+  </section>
+  <!-- 6 · VENTANA + ZOOM: el nombre es una ventana al retrato; al scrollear, las letras crecen hasta que la foto llena la pantalla -->
+  <section id="o6" class="h o6">
+    <div class="pin">
+      <div class="stage">
+        <Picture class="bgphoto" src={heroPhoto.src} alt="" formats={['avif', 'webp']} widths={[640]} sizes="100vw" loading="lazy" />
+        <div class="knock"><h1 aria-label={site.name}><span aria-hidden="true">{first}</span><span aria-hidden="true">{last}</span></h1></div>
+        <div class="over"><p class="roles">{site.rolesLine}</p><a class="cta" href="#biografia">{site.cta}</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · VERTICAL: las dos palabras giradas, a toda la altura -->
+  <section id="o7" class="h o7">
+    <h1 class="vert" aria-label={site.name}><span aria-hidden="true">{first}</span><span aria-hidden="true">{last}</span></h1>
+    <figure class="ph"><Picture src={heroPhoto.src} alt={heroPhoto.alt} formats={['avif', 'webp']} widths={[480, 640]} sizes="32vw" loading="lazy" /></figure>
+    <div class="info">
+      <p class="roles">{site.rolesLine}</p>
+      <p class="tag">{site.tagline}</p>
+      <p class="loc">{site.location}</p>
+      <a class="cta" href="#biografia">{site.cta}</a>
+    </div>
+  </section>
+
+  <!-- 8 · PERSONAJES EN EL NOMBRE: el mosaico de personajes se ve a través de las letras -->
+  <section id="o8" class="h o8">
+    <div class="stage">
+      <div class="mosaic" aria-hidden="true">{gallery.map((p) => <Picture src={p.src} alt="" formats={['avif', 'webp']} widths={[400, 600]} sizes="34vw" loading="lazy" />)}</div>
+      <div class="knock"><h1 aria-label={site.name}><span aria-hidden="true">{first}</span><span aria-hidden="true">{last}</span></h1></div>
+      <div class="over"><p class="roles">{site.rolesLine}</p><a class="cta" href="#biografia">{site.cta}</a></div>
+    </div>
+  </section>
+
+  <!-- 9 · HOJA DE CONTACTOS: fotogramas en B/N y el retrato marcado con lápiz rojo -->
+  <section id="o9" class="h o9">
+    <div class="sheet" aria-hidden="true">
+      {[...gallery.slice(0, 4).map((p) => p.src), heroPhoto.src, ...gallery.slice(4).map((p) => p.src)].map((src, i) => (
+        <figure class={`cf ${i === 4 ? 'pick' : ''}`}>
+          <Picture src={src} alt="" formats={['avif', 'webp']} widths={[400, 600]} sizes="20vw" loading="lazy" />
+          <figcaption>{String(i + 1).padStart(2, '0')}</figcaption>
+          {i === 4 && (
+            <svg class="mark" viewBox="0 0 200 150" preserveAspectRatio="none"><path d="M18 78C10 30 70 6 118 10c58 4 84 34 78 66-6 34-54 62-110 58C40 131 8 112 16 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" /></svg>
+          )}
+        </figure>
+      ))}
+    </div>
+    <div class="head">
+      <h1>{site.name}</h1>
+      <div class="side"><p class="roles">{site.rolesLine}</p><a class="cta" href="#biografia">{site.cta}</a></div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .picker { position: sticky; top: 0; z-index: 90; display: flex; flex-wrap: wrap; gap: 1.25rem; padding: 0.75rem var(--gutter); background: var(--ink); border-bottom: 1px solid var(--rule); font-size: var(--step-small); letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+  .picker a { text-decoration: none; padding: .35rem 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .h { position: relative; min-height: calc(100svh - 3rem); overflow: clip; isolation: isolate; border-bottom: 8px solid var(--curtain); scroll-margin-top: 3rem; }
+  .h .cta { display: inline-block; padding: .75rem 0; font-size: .9375rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; text-decoration: underline; text-decoration-color: var(--curtain-lit); text-decoration-thickness: 3px; text-underline-offset: .7em; }
+  .h .roles { font-size: var(--step-small); font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--bone-dim); }
+  .display { font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; }
+
+  /* ---------- 1 ---------- */
+  .o1 { display: grid; place-items: center; background: var(--ink); }
+  .o1 .rows { position: absolute; inset: 0; display: grid; align-content: center; z-index: -1; }
+  .o1 .row { overflow: clip; white-space: nowrap; font-family: var(--font-display); font-stretch: 70%; font-weight: 800; font-size: clamp(6rem, 21vw, 19rem); line-height: .82; color: var(--bone); }
+  .o1 .row.out { color: transparent; -webkit-text-stroke: 2px var(--bone-dim); }
+  .o1 .track { display: inline-block; animation: m1 60s linear infinite; }
+  .o1 .row.rev .track { animation-direction: reverse; animation-duration: 75s; }
+  @keyframes m1 { to { transform: translateX(-50%); } }
+  .o1 .portrait { margin: 0; width: min(34vw, 30rem); aspect-ratio: 3 / 4; box-shadow: 0 0 0 10px var(--ink), 0 30px 80px rgb(0 0 0 / .7); }
+  .o1 .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+  .o1 .copy { position: absolute; left: var(--gutter); bottom: 2.5rem; padding: 1.25rem 1.5rem; background: var(--ink); display: grid; gap: .4rem; }
+  .o1 .loc { color: var(--bone-dim); font-size: var(--step-small); letter-spacing: .12em; }
+  @media (prefers-reduced-motion: reduce) { .o1 .track { animation: none; } }
+  @media (max-width: 700px) { .o1 .portrait { width: 62vw; } }
+
+  /* ---------- 2 ---------- */
+  .o2 { display: grid; align-items: end; padding: 6rem var(--gutter) 4rem; background: var(--ink); }
+  .o2 .ph { position: absolute; inset: 0 0 0 auto; width: min(44vw, 640px); margin: 0; z-index: -1; }
+  .o2 .ph img { width: 100%; height: 100%; object-fit: cover; opacity: .55; filter: contrast(1.1); }
+  .o2 .ph::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink), transparent 60%); }
+  .o2 h1 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .84; font-size: clamp(4.5rem, 16vw, 15rem); }
+  .o2 .line { display: block; white-space: nowrap; }
+  .o2 b { display: inline-block; font-weight: 800; font-stretch: 62%; animation: morph 3.6s ease-in-out infinite; animation-delay: calc(var(--i) * -.28s); }
+  @keyframes morph { 0%, 100% { font-stretch: 62%; } 50% { font-stretch: 125%; } }
+  .o2 .roles { margin-top: 1.5rem; }
+  .o2 .tag { margin-top: .75rem; max-width: 30rem; }
+  .o2 .cta { margin-top: 1.25rem; }
+  @media (prefers-reduced-motion: reduce) { .o2 b { animation: none; font-stretch: 80%; } }
+  @media (max-width: 700px) { .o2 h1 { font-size: 15vw; } }
+
+  /* ---------- 3 ---------- */
+  .o3 { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr auto; background: #050504; }
+  .o3 .strip { margin: 0; position: absolute; top: 0; bottom: 0; left: 50%; translate: -50% 0; width: min(640px, 92vw); z-index: -1; }
+  .o3 .strip img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) brightness(.95); }
+  .o3 .strip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(5 5 4 / .85), transparent 40%, transparent 70%, rgb(5 5 4 / .5)); }
+  .o3 .title { grid-row: 1; align-self: end; margin-bottom: 8vh; text-align: center; mix-blend-mode: difference; }
+  .o3 h1 { font-weight: 400; line-height: .8; color: #fff; }
+  .o3 .a { display: block; font-family: 'Instrument Serif', 'Times New Roman', serif; font-style: italic; font-size: clamp(6rem, 24vw, 22rem); letter-spacing: -.03em; }
+  .o3 .b { display: block; margin-top: 1.25rem; font-family: var(--font-display); font-stretch: 125%; font-weight: 700; font-size: clamp(1.25rem, 3.4vw, 3.25rem); letter-spacing: .6em; padding-left: .6em; text-transform: uppercase; }
+  .o3 .billing { grid-row: 2; padding-block: 1.5rem 2rem; display: flex; justify-content: center; gap: 1.5rem 2.5rem; flex-wrap: wrap; padding-inline: var(--gutter); }
+  .o3 .bl { font-family: var(--font-display); font-stretch: 62%; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; font-size: .8125rem; color: var(--bone-dim); }
+  .o3 .cta { position: absolute; top: 4.5rem; right: var(--gutter); }
+
+  /* ---------- 4 ---------- */
+  .o4 { display: grid; place-items: center; padding: 5rem var(--gutter) 3rem; background: var(--ink-2); }
+  .o4 .slate { width: min(100%, 76rem); border: 3px solid var(--bone); background: #000; }
+  .o4 .stick { display: flex; height: 3.25rem; border-bottom: 3px solid var(--bone); overflow: hidden; transform-origin: 0 100%; }
+  .o4 .stick i { flex: 1; background: var(--bone); transform: skewX(-32deg); margin-inline: -.9rem; }
+  .o4 .stick i:nth-child(even) { background: #000; }
+  .o4 .board { display: grid; grid-template-columns: 1fr; }
+  .o4 .frame { margin: 0; aspect-ratio: 4 / 3; border-bottom: 3px solid var(--bone); }
+  .o4 .frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  .o4 .fields { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .o4 .f { padding: .9rem 1rem; border-right: 2px solid var(--bone); border-bottom: 2px solid var(--bone); }
+  .o4 .f small { display: block; font-size: .6875rem; letter-spacing: .3em; text-transform: uppercase; color: var(--bone-dim); margin-bottom: .35rem; }
+  .o4 .f.wide { grid-column: 1 / -1; }
+  .o4 h1 { font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; line-height: .9; font-size: clamp(3.5rem, 11vw, 9rem); }
+  .o4 .f p { font-weight: 600; }
+  .o4 .n { font-family: var(--font-display); font-stretch: 70%; font-weight: 800; font-size: 3rem; line-height: 1; }
+  .o4 .cta-cell { grid-column: 1 / -1; display: grid; place-items: center; background: var(--bone); color: #000; border-color: #000; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; text-decoration: none; padding-block: 1.1rem; }
+  .o4 .cta-cell:hover { background: var(--curtain-lit); }
+  @media (min-width: 900px) {
+    .o4 .board { grid-template-columns: 5fr 7fr; }
+    .o4 .frame { aspect-ratio: auto; border-bottom: 0; border-right: 3px solid var(--bone); }
+    .o4 .fields { grid-template-columns: repeat(4, 1fr); }
+    .o4 .f.wide { grid-column: 1 / -1; }
+    .o4 .f:nth-child(2) { grid-column: span 2; } .o4 .f:nth-child(3) { grid-column: span 2; }
+    .o4 .cta-cell { grid-column: span 2; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .o4 .stick { animation: clap .55s cubic-bezier(.5, 0, .2, 1) .5s both; }
+    @keyframes clap { from { transform: rotate(-24deg); } to { transform: rotate(0); } }
+  }
+
+  /* ---------- 5 ---------- */
+  .o5 { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; background: #000; }
+  .o5 .film { overflow: clip; padding-block: 1.6rem; background: #0b0a09; position: relative; }
+  .o5 .film::before, .o5 .film::after { content: ''; position: absolute; left: 0; right: 0; height: .9rem; background: radial-gradient(circle at .6rem .45rem, #000 .22rem, transparent .25rem) 0 0 / 1.6rem 100% repeat-x; opacity: .9; }
+  .o5 .film::before { top: .35rem; } .o5 .film::after { bottom: .35rem; }
+  .o5 .reel { display: flex; gap: .75rem; width: max-content; animation: m5 70s linear infinite; }
+  .o5 .reel.rev { animation-direction: reverse; animation-duration: 85s; }
+  @keyframes m5 { to { transform: translateX(-50%); } }
+  .o5 .fr { flex: none; width: clamp(9rem, 20vw, 16rem); aspect-ratio: 4 / 3; }
+  .o5 .fr img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) contrast(1.05); }
+  .o5 .center { display: grid; place-items: center; align-content: center; gap: 1.25rem; padding: 2rem var(--gutter); text-align: center; }
+  .o5 h1 { font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; line-height: .82; font-size: clamp(4.5rem, 19vw, 17rem); }
+  .o5 h1 span { display: block; }
+  @media (prefers-reduced-motion: reduce) { .o5 .reel { animation: none; } }
+  /* ---------- 6 ---------- */
+  .o6 { min-height: 0; border-bottom: 0; }
+  .o6 .pin { height: 260svh; view-timeline-name: --pin; }
+  .o6 .stage { position: sticky; top: 3rem; height: calc(100svh - 3rem); overflow: clip; background: #000; }
+  .o6 .bgphoto, .o8 .mosaic { position: absolute; inset: 0; }
+  .o6 .bgphoto { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; filter: brightness(1.35) contrast(1.1); }
+  .knock { position: absolute; inset: 0; background: var(--ink); mix-blend-mode: multiply; display: grid; place-items: center; }
+  .knock h1 { color: #fff; font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; line-height: .8; text-align: center; font-size: min(20.5vw, 40svh); }
+  .knock h1 span { display: block; }
+  .over { position: absolute; left: var(--gutter); bottom: 1.75rem; display: grid; gap: .5rem; }
+  .o6 .over, .o8 .over { padding: .9rem 1.1rem; background: var(--ink); }
+  @media (prefers-reduced-motion: no-preference) {
+    .o6 .knock { animation-name: zoom; animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --pin; animation-range: cover 27% cover 68%; }
+    @keyframes zoom { 0% { scale: 1; opacity: 1; } 80% { scale: 9; opacity: 1; } 100% { scale: 13; opacity: 0; } }
+  }
+
+  /* ---------- 7 ---------- */
+  .o7 { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(16rem, 22rem); align-items: stretch; gap: clamp(1rem, 3vw, 3rem); padding: 0 var(--gutter) 0 calc(var(--gutter) * .6); background: var(--ink); }
+  .o7 .vert { display: flex; flex-direction: column; writing-mode: vertical-rl; transform: rotate(180deg); font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; line-height: .82; font-size: min(21svh, 13vw); gap: .04em; padding-block: 1rem; white-space: nowrap; }
+  .o7 .vert span { display: block; }
+  .o7 .ph { margin: 0; align-self: center; height: 78%; min-height: 24rem; }
+  .o7 .ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  .o7 .info { align-self: end; display: grid; gap: .9rem; padding-bottom: 3rem; }
+  .o7 .loc { color: var(--bone-dim); font-size: var(--step-small); letter-spacing: .12em; }
+  @media (max-width: 800px) { .o7 { grid-template-columns: auto 1fr; } .o7 .info { grid-column: 1 / -1; padding-bottom: 2rem; } .o7 .ph { min-height: 18rem; } }
+
+  /* ---------- 8 ---------- */
+  .o8 { min-height: 0; }
+  .o8 .stage { position: relative; height: calc(100svh - 3rem); overflow: clip; background: #000; }
+  .o8 .mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+  .o8 .mosaic img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.6) saturate(1.15); }
+  .o8 .knock h1 { font-size: min(20.5vw, 40svh); }
+
+  /* ---------- 9 ---------- */
+  .o9 { display: grid; grid-template-rows: 1fr auto; background: #0a0908; }
+  .o9 .sheet { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem .9rem; padding: 2.5rem var(--gutter) 1rem; align-content: center; }
+  .o9 .cf { margin: 0; position: relative; padding: .5rem .5rem 0; background: #16130f; }
+  .o9 .cf img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1) contrast(1.15) brightness(1.05); }
+  .o9 .cf.pick img { object-position: 50% 24%; }
+  .o9 figcaption { padding: .35rem .1rem .45rem; font-size: .625rem; letter-spacing: .3em; color: var(--bone-dim); }
+  .o9 .mark { position: absolute; inset: -.8rem -.9rem; width: calc(100% + 1.8rem); height: calc(100% + 1.6rem); color: var(--curtain-lit); pointer-events: none; }
+  .o9 .head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding: 1rem var(--gutter) 2rem; }
+  .o9 h1 { font-family: var(--font-display); font-stretch: 70%; font-weight: 800; text-transform: uppercase; line-height: .82; font-size: clamp(3.5rem, 12vw, 11rem); }
+  .o9 .side { display: grid; gap: .6rem; }
+  @media (max-width: 800px) { .o9 .sheet { grid-template-columns: repeat(2, 1fr); } }
+</style>

@@ -8,6 +8,10 @@ import p06 from '../assets/photos/nelson-taffarel-06.jpg';
 import p07 from '../assets/photos/nelson-taffarel-07.jpg';
 import p08 from '../assets/photos/nelson-taffarel-08.jpg';
 import p09 from '../assets/photos/nelson-taffarel-09.png';
+import p10 from '../assets/photos/nelson-taffarel-10.jpg';
+import p11 from '../assets/photos/nelson-taffarel-11.jpg';
+import p12 from '../assets/photos/nelson-taffarel-12.jpg';
+import p13 from '../assets/photos/nelson-taffarel-13.jpg';
 import hero from '../assets/photos/nelson-taffarel-actor-hero.jpg';
 
 export interface Photo {
@@ -20,5 +24,8 @@ const ALT = 'Nelson Taffarel, actor — retrato';
 
 export const heroPhoto: Photo = { src: hero, alt: ALT };
 
-// Orden idéntico al del sitio original.
-export const gallery: Photo[] = [p01, p02, p03, p04, p05, p06, p07, p08, p09].map((src) => ({ src, alt: ALT }));
+// Orden idéntico al del sitio original; 10-13 son fotos personales agregadas después, en mejor resolución.
+export const gallery: Photo[] = [p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13].map((src) => ({
+  src,
+  alt: ALT,
+}));
