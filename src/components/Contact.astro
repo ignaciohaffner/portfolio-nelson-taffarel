@@ -14,10 +14,6 @@ import { site } from '../content/site';
       <li><a href={site.links.instagram} target="_blank" rel="noopener">Instagram</a></li>
       <li><a href={site.links.vimeo} target="_blank" rel="noopener">Vimeo</a></li>
     </ul>
-    <section class="press" aria-labelledby="prensa-titulo">
-      <h3 id="prensa-titulo">Bio breve</h3>
-      <p>{site.shortBio}</p>
-    </section>
   </div>
 </section>
 
@@ -29,9 +25,6 @@ import { site } from '../content/site';
     font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800;
     font-size: 1.75rem; color: var(--bone); letter-spacing: 0.01em;
   }
-  .press { margin-top: clamp(2.5rem, 6vw, 4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--rule); max-width: 46rem; }
-  .press h3 { font-family: var(--font-text); font-size: var(--step-small); font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--curtain-lit); margin-bottom: 0.75rem; }
-  .press p { color: var(--bone-dim); font-size: 1rem; }
   ul { margin-top: clamp(1.5rem, 4vw, 3rem); display: grid; gap: 0.25rem; }
   a {
     display: inline-block; padding-block: 0.25rem;
