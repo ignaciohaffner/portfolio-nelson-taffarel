@@ -23,6 +23,17 @@ import { site } from '../content/site';
       display: block; position: fixed; z-index: 55; right: 1.25rem; top: 50%; translate: 0 -50%;
       padding: 0.5rem 0.25rem; background: var(--ink); border: 1px solid var(--rule); border-radius: 999px;
     }
+    /* No aparece sobre el hero: entra con un fundido al salir de él. */
+    @supports (animation-timeline: scroll()) {
+      .side-nav {
+        animation-name: side-in; animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both;
+        animation-timeline: scroll(root); animation-range: 70svh 100svh;
+      }
+      @keyframes side-in {
+        from { opacity: 0; visibility: hidden; }
+        to { opacity: 1; visibility: visible; }
+      }
+    }
     ul { display: grid; gap: 0.125rem; }
     a { position: relative; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; text-decoration: none; }
     .dot {
