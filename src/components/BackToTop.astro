@@ -1,0 +1,58 @@
+---
+// Chiche: botón claqueta para volver arriba (features.backToTop). Sin JS: es un ancla a #home.
+// Aparece al salir del hero (CSS scroll-timeline). Borrar este componente + su uso en index.astro = revertir.
+---
+<a class="to-top" href="#home" aria-label="Volver arriba">
+  <span class="chip" aria-hidden="true">¡Otra toma!</span>
+  <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true" focusable="false">
+    <!-- cuerpo de la claqueta -->
+    <rect x="6" y="22" width="36" height="20" rx="1.5" fill="none" stroke="currentColor" stroke-width="2" />
+    <path d="M12 30h24M12 36h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    <!-- tablilla que golpea -->
+    <g class="stick">
+      <rect x="6" y="13" width="36" height="8" rx="1.5" fill="var(--ink)" stroke="currentColor" stroke-width="2" />
+      <path d="M14 13l-5 8M24 13l-5 8M34 13l-5 8M42 14l-4 7" stroke="currentColor" stroke-width="3" />
+    </g>
+  </svg>
+</a>
+
+<style>
+  .to-top {
+    position: fixed; z-index: 60;
+    right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
+    display: grid; place-items: center; width: 3.5rem; height: 3.5rem;
+    color: var(--bone); background: var(--ink); border: 1px solid var(--rule); border-radius: 50%;
+    text-decoration: none; transition: border-color 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
+  }
+  .to-top:hover, .to-top:focus-visible { border-color: var(--curtain-lit); background: var(--curtain); }
+  svg { overflow: visible; }
+  .stick { transform-origin: 6px 21px; transform-box: view-box; transition: transform 0.25s var(--ease-out); }
+  .to-top:hover .stick, .to-top:focus-visible .stick { transform: rotate(-24deg); }
+  /* ¡clap! al hacer click */
+  .to-top:active .stick { transform: rotate(0); transition-duration: 0.05s; }
+
+  .chip {
+    position: absolute; right: calc(100% + 0.75rem); top: 50%; translate: 0.5rem -50%;
+    padding: 0.4rem 0.7rem; white-space: nowrap; background: var(--bone); color: var(--ink);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease-out), translate 0.25s var(--ease-out);
+  }
+  @media (hover: hover) {
+    .to-top:hover .chip, .to-top:focus-visible .chip { opacity: 1; translate: 0 -50%; }
+  }
+
+  /* Aparece al salir del hero */
+  @supports (animation-timeline: scroll()) {
+    .to-top {
+      animation-name: to-top-in; animation-duration: 1ms; animation-timing-function: linear; animation-fill-mode: both;
+      animation-timeline: scroll(root); animation-range: 90svh 130svh;
+    }
+    @keyframes to-top-in {
+      from { opacity: 0; visibility: hidden; transform: translateY(1rem) scale(0.8); }
+      to { opacity: 1; visibility: visible; transform: none; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stick, .chip, .to-top { transition: none; }
+  }
+</style>
