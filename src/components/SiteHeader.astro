@@ -42,6 +42,10 @@ import { site } from '../content/site';
   }
   @supports not (animation-timeline: scroll()) { .site-header { background: var(--ink); } }
 
+  /* Con el menú mobile abierto el header es sólido y muestra el nombre (sin foto asomando). */
+  .site-header:has(.menu[open]) { animation: none; background-color: var(--ink); box-shadow: 0 1px 0 var(--rule); }
+  .site-header:has(.menu[open]) .brand { animation: none; opacity: 1; visibility: visible; }
+
   .brand {
     font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 700; font-size: 1.375rem;
     letter-spacing: -0.01em; text-decoration: none;
