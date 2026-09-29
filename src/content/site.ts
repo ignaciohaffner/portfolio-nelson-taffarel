@@ -11,8 +11,11 @@ export const site = {
   roles: ['Actor', 'Actor de voz', 'Imitador'],
   alternateName: 'Nel Taffarel',
   rolesLine: 'Actor · Actor de voz · Imitador',
-  location: 'Gualeguaychú, Entre Ríos',
-  tagline: 'Actor, actor de voz e imitador con trayectoria en teatro, cine y televisión.',
+  location: 'Gualeguaychú, Entre Ríos', // solo para datos estructurados (JSON-LD); ya no se muestra en pantalla
+  // TODO-CONTENIDO: confirmar con Nelson letra por letra antes de publicar (transcripción de audio poco clara)
+  residence: 'Resido entre Buenos Aires y Gualeguaychú',
+  mail: 'neltaffarel@gmail.com',
+  tagline: 'Actor, actor de voz e imitador con trayectoria en teatro, cine y televisión.', // sin uso en el sitio; queda para /hero-opciones
   cta: 'Conóceme',
   description:
     'Sitio oficial de Nelson Taffarel (Nel Taffarel), actor argentino de Gualeguaychú. Trayectoria en teatro, televisión, cine, publicidad, locución e imitaciones.',
@@ -49,5 +52,5 @@ export const site = {
   contactText:
     'Para propuestas de actuación, teatro, televisión, cine, publicidad, locuciones, castings, eventos y proyectos audiovisuales:',
   footerText:
-    'Soy Nel Taffarel, actor, actor de voz e imitador de Gualeguaychú, Entre Ríos. Mi recorrido incluye teatro, cine, televisión, publicidad, locución e imitaciones.',
+    'Soy Nel Taffarel, actor, actor de voz e imitador. Mi trabajo incluye teatro, cine, televisión, publicidad, locución e imitaciones.',
 } as const;

@@ -1,28 +1,8 @@
-// Texto en primera persona entregado por Nelson (revisado por él). Las negritas son solo de lectura rápida.
+// Texto en primera persona entregado por Nelson (revisado por él, con la ronda de correcciones
+// del 28/09/2026: menos repetición de Gualeguaychú/nombre, TV ampliada, orden de bloques y ecuestre).
 export const intro = [
-  'Soy <strong>Nel Taffarel</strong>. Mi nombre completo es <strong>Nelson Taffarel</strong> y soy actor, actor de voz e imitador, nacido en <strong>Gualeguaychú, Entre Ríos</strong>.',
+  'Soy <strong>Nel Taffarel</strong>. Mi nombre completo es <strong>Nelson Taffarel</strong> y soy actor, actor de voz e imitador.',
   'A lo largo de mi recorrido trabajé en teatro, televisión, cine, publicidad, locución e imitaciones, desarrollando distintos registros de interpretación frente a cámara, sobre el escenario y detrás del micrófono.',
-];
-
-export interface Section {
-  title: string;
-  paragraphs: string[];
-}
-
-export const about: Section[] = [
-  {
-    title: 'Mi recorrido',
-    paragraphs: [
-      'A lo largo de los años fui construyendo un camino que combina <a href="#teatro">teatro</a>, <a href="#cine">cine</a>, <a href="#television">televisión</a>, <a href="#voz">voz</a>, <a href="#voz">publicidad</a> e <a href="#imitaciones">imitaciones</a>.',
-      'Cada una de esas experiencias me permitió crecer como actor y desarrollar una mirada versátil sobre la interpretación.',
-    ],
-  },
-  {
-    title: 'Actualmente',
-    paragraphs: [
-      'Actualmente continúo vinculado a la actuación, los castings, la publicidad, la voz y los contenidos audiovisuales, manteniendo activa una trayectoria construida a través de diferentes experiencias y etapas.',
-    ],
-  },
 ];
 
 export interface Block {
@@ -31,6 +11,7 @@ export interface Block {
   paragraphs: string[];
 }
 
+// Orden pedido por Nelson: Teatro, Cine, Televisión, Imitaciones, Ecuestre y, al final de todo, Voz y publicidad.
 export const career: Block[] = [
   {
     id: 'teatro',
@@ -39,7 +20,6 @@ export const career: Block[] = [
       'El teatro ocupa un lugar muy importante en mi formación y en mi desarrollo como actor.',
       'Tuve la oportunidad de trabajar bajo la dirección de <strong>Agustín Alezzo</strong>, participando en propuestas sobre textos de autores como <strong>Woody Allen</strong> y <strong>Harold Pinter</strong>, entre ellas <strong>Central Park West</strong> y <strong>La colección</strong>.',
       'También formé parte de <strong>El reñidero</strong>, de Sergio De Cecco, en el ámbito del <strong>Teatro San Martín</strong>, y participé en producciones del <strong>Teatro Colón</strong> como <strong>Los cuentos de Hoffmann</strong> y <strong>Atila</strong>.',
-      'Estas experiencias fueron fundamentales en mi formación y me permitieron desarrollar distintos lenguajes de actuación y trabajo escénico.',
     ],
   },
   {
@@ -56,17 +36,11 @@ export const career: Block[] = [
     id: 'television',
     title: 'Televisión',
     paragraphs: [
-      'Mi experiencia en televisión incluye participaciones en <strong>Videomatch</strong>, trabajos en <strong>Canal 9</strong>, <strong>Casados con Hijos</strong>, <strong>Los Únicos</strong> y otras producciones audiovisuales.',
-      'La televisión me permitió explorar otros tiempos y registros de actuación, sumando nuevas herramientas a mi trabajo.',
-    ],
-  },
-  {
-    id: 'voz',
-    title: 'Actor de voz y publicidad',
-    paragraphs: [
-      'Además de mi trabajo como actor, desarrollé una faceta profesional como <strong>actor de voz y locutor publicitario</strong>.',
-      'Participé en piezas y campañas vinculadas a marcas como <strong>Ford</strong>, <strong>Amarok</strong>, <strong>Stella Artois</strong>, <strong>YPF</strong>, <strong>Vinos Los Intocables</strong> y <strong>Pago Fácil</strong>.',
-      'El trabajo de voz me permitió seguir ampliando mis recursos expresivos y explorar nuevas formas de interpretación.',
+      'Mi experiencia en televisión incluye participaciones en <strong>Videomatch</strong> en los años 90, <strong>El Paparazzi</strong> (Canal 9) y <strong>Canal 13 de San Luis</strong>, haciendo varios personajes para un programa del Mundial 2013.',
+      // TODO-CONTENIDO: Nelson mencionó un tercer programa que no se entendió bien en el audio
+      // ("cociar de esmeralda" en la transcripción automática). Confirmar el nombre exacto antes
+      // de agregarlo.
+      'También participé en <strong>Sin código</strong> y <strong>Hombres de honor</strong>.',
     ],
   },
   {
@@ -82,8 +56,19 @@ export const career: Block[] = [
     id: 'ecuestre',
     title: 'Mundo ecuestre',
     paragraphs: [
-      'Fuera del ámbito artístico, también desarrollé una relación muy cercana con el mundo de los caballos.',
-      'Cuento con experiencia en <strong>cuidado y manejo de caballos</strong> y también practiqué <strong>polo</strong>, una disciplina que forma parte de otra de mis pasiones.',
+      'Fuera del ámbito artístico, también desarrollé una relación muy cercana con el mundo de los caballos: cuento con experiencia en <strong>cuidado y manejo de caballos</strong> y también practiqué <strong>polo</strong> como deportista.',
+      'Desde un lugar más artístico, además, desarrollé imitaciones de jugadores de polo y humor para <strong>Pololine</strong>, entre ellas una imitación de <strong>Adolfo Cambiaso</strong>.',
+      // TODO-CONTENIDO: Nelson mencionó que de ESPN Polo lo llamaron pero aclaró que nunca llegó
+      // a trabajar ahí ("me llamaron pero nunca laburé"). No se agrega como crédito real hasta que
+      // él confirme explícitamente que quiere incluirlo.
+    ],
+  },
+  {
+    id: 'voz',
+    title: 'Actor de voz y publicidad',
+    paragraphs: [
+      'Además de mi trabajo como actor, desarrollé una faceta profesional como <strong>actor de voz y locutor publicitario</strong>.',
+      'Participé en piezas y campañas vinculadas a marcas como <strong>Ford</strong>, <strong>Amarok</strong>, <strong>Stella Artois</strong>, <strong>YPF</strong>, <strong>Vinos Los Intocables</strong> y <strong>Pago Fácil</strong>.',
     ],
   },
 ];

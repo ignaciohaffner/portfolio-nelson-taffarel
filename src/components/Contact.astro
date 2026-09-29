@@ -8,12 +8,12 @@ import { site } from '../content/site';
     <address>
       <strong>{site.alternateName}</strong>
       <span>{site.rolesLine}</span>
-      <span>{site.location}, Argentina</span>
+      <span>{site.residence}</span>
     </address>
     <ul>
       <li><a href={site.links.instagram} target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href={site.links.vimeo} target="_blank" rel="noopener">Vimeo</a></li>
     </ul>
+    <p class="mail"><a href={`mailto:${site.mail}`}>{site.mail}</a></p>
   </div>
 </section>
 
@@ -34,4 +34,13 @@ import { site } from '../content/site';
     transition: text-decoration-color 0.4s var(--ease-out);
   }
   a:hover { text-decoration-color: var(--curtain-lit); }
+
+  /* El mail no entra en el mismo tamaño gigante que Instagram: tipografía de texto, no de afiche */
+  .mail { margin-top: 1.25rem; }
+  .mail a {
+    font-family: var(--font-text); font-stretch: 100%; font-weight: 600; text-transform: none;
+    font-size: clamp(1.125rem, 2.2vw, 1.5rem); letter-spacing: 0.01em;
+    color: var(--bone-dim); text-decoration-color: var(--rule); word-break: break-all;
+  }
+  .mail a:hover { color: var(--bone); }
 </style>

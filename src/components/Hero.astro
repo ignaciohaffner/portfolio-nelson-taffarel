@@ -20,9 +20,6 @@ const [first, ...rest] = site.name.split(' ');
   <div class="copy">
     <h1><span>{first}</span> <span>{rest.join(' ')}</span></h1>
     <p class="roles">{site.rolesLine}</p>
-    <p class="tagline">{site.tagline}</p>
-    <p class="place">{site.location}</p>
-    <a class="cta" href="#biografia">{site.cta}</a>
   </div>
 </section>
 
@@ -56,16 +53,6 @@ const [first, ...rest] = site.name.split(' ');
     font-size: var(--step-small); font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase;
     color: var(--bone-dim);
   }
-  .tagline { margin-top: 1.25rem; max-width: 30rem; color: var(--bone); font-size: 1.0625rem; line-height: 1.45; }
-  .place { margin-top: 0.6rem; font-size: var(--step-small); letter-spacing: 0.12em; color: var(--bone-dim); }
-  .cta {
-    display: inline-block; margin-top: 2.25rem; padding: 0.75rem 0;
-    font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-    text-decoration: underline; text-decoration-color: var(--curtain-lit); text-decoration-thickness: 3px;
-    text-underline-offset: 0.7em; transition: text-underline-offset 0.4s var(--ease-out);
-  }
-  .cta:hover { text-underline-offset: 0.35em; }
-
   /* Desktop: retrato a la derecha (la fuente es 640 px de ancho: no se estira a sangre completa) */
   @media (min-width: 900px) {
     .photo { left: auto; width: min(46vw, 640px); }
@@ -83,7 +70,7 @@ const [first, ...rest] = site.name.split(' ');
     @keyframes drift { from { transform: scale(1); } to { transform: scale(1.07); } }
     h1 span { animation: rise 1.1s var(--ease-out) both; }
     h1 span:last-child { animation-delay: 0.12s; }
-    .roles, .tagline, .place, .cta { animation: fade 1s var(--ease-out) 0.5s both; }
+    .roles { animation: fade 1s var(--ease-out) 0.5s both; }
     @keyframes rise { from { opacity: 0; transform: translateY(0.35em); } }
     @keyframes fade { from { opacity: 0; } }
   }
