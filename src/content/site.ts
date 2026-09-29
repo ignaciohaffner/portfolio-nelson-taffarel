@@ -47,8 +47,6 @@ export const site = {
   },
   videosText:
     'Una selección de trabajos, imitaciones, participaciones televisivas, material audiovisual y distintos momentos de la trayectoria artística de <strong>Nel Taffarel</strong>.',
-  galleryText:
-    'Imágenes de trabajos actorales, teatro, televisión, cine, publicidad y diferentes momentos de la trayectoria de Nel Taffarel.',
   contactText:
     'Para propuestas de actuación, teatro, televisión, cine, publicidad, locuciones, castings, eventos y proyectos audiovisuales:',
   footerText:
