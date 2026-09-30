@@ -8,13 +8,11 @@ export const features = {
 
 export const site = {
   name: 'Nelson Taffarel',
-  roles: ['Actor', 'Actor de voz', 'Imitador'],
+  roles: ['Actor dramático', 'Actor de voz', 'Imitador'],
   alternateName: 'Nel Taffarel',
-  rolesLine: 'Actor · Actor de voz · Imitador',
+  rolesLine: 'Actor dramático · Actor de voz · Imitador',
   location: 'Gualeguaychú, Entre Ríos', // solo para datos estructurados (JSON-LD); ya no se muestra en pantalla
-  // TODO-CONTENIDO: confirmar con Nelson letra por letra antes de publicar (transcripción de audio poco clara)
-  residence: 'Resido entre Buenos Aires y Gualeguaychú',
-  mail: 'neltaffarel@gmail.com',
+  mail: 'neltaffarel@gmail.com', // confirmado por Nelson
   tagline: 'Actor, actor de voz e imitador con trayectoria en teatro, cine y televisión.', // sin uso en el sitio; queda para /hero-opciones
   cta: 'Conóceme',
   description:

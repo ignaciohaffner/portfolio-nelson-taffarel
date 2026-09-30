@@ -10,7 +10,6 @@ import { intro } from '../content/bio';
 
     <div class="lead">
       <p class="big" set:html={intro[0]} />
-      <p class="sub" set:html={intro[1]} />
     </div>
   </div>
 </section>
@@ -30,5 +29,4 @@ import { intro } from '../content/bio';
     font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1.2; letter-spacing: -0.005em;
   }
   .big :global(strong) { font-weight: 800; }
-  .sub { margin-top: 1.5rem; max-width: var(--measure); color: var(--bone-dim); }
 </style>

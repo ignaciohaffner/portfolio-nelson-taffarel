@@ -1,7 +1,6 @@
 // Texto en primera persona, versión directa: sin narrativa de "esto me ayudó/me permitió", solo el dato.
 export const intro = [
-  'Soy <strong>Nel Taffarel</strong>. Mi nombre completo es <strong>Nelson Taffarel</strong> y soy actor, actor de voz e imitador.',
-  'Trabajé en teatro, televisión, cine, publicidad, locución e imitaciones: frente a cámara, en escena y detrás del micrófono.',
+  'Teatro, televisión, cine, publicidad, locución e imitaciones: frente a cámara, en escena y detrás del micrófono.',
 ];
 
 export interface Block {
@@ -10,7 +9,8 @@ export interface Block {
   paragraphs: string[];
 }
 
-// Orden pedido por Nelson: Teatro, Cine, Televisión, Imitaciones, Ecuestre y, al final de todo, Voz y publicidad.
+// Orden pedido por Nelson: Teatro, Cine, Televisión, Ecuestre y, al final de todo, Voz y publicidad.
+// (El bloque de Imitaciones se sacó del todo por pedido explícito.)
 export const career: Block[] = [
   {
     id: 'teatro',
@@ -34,29 +34,15 @@ export const career: Block[] = [
     title: 'Televisión',
     paragraphs: [
       '<strong>Videomatch</strong> en los años 90. <strong>El Paparazzi</strong> (Canal 9). <strong>Canal 13 de San Luis</strong>, varios personajes para un programa del Mundial 2013.',
-      // TODO-CONTENIDO: Nelson mencionó un tercer programa que no se entendió bien en el audio
-      // ("cociar de esmeralda" en la transcripción automática). Confirmar el nombre exacto antes
-      // de agregarlo.
-      '<strong>Sin código</strong> y <strong>Hombres de honor</strong>.',
-    ],
-  },
-  {
-    id: 'imitaciones',
-    title: 'Imitaciones',
-    paragraphs: [
-      'Imito voces, gestos y personajes desde chico.',
-      'Hoy es parte de mi trabajo en televisión, publicidad y actuación de voz.',
+      '<strong>Sin código</strong>, <strong>Hombres de honor</strong>, <strong>Collar de Esmeralda</strong>, <strong>Los Roldán</strong>, <strong>Casados con hijos</strong>, <strong>RRDT</strong>, entre otros.',
     ],
   },
   {
     id: 'ecuestre',
     title: 'Mundo ecuestre',
     paragraphs: [
-      'Cuidado y manejo de caballos. Jugué al <strong>polo</strong> como deportista.',
-      'Imitaciones de jugadores de polo y humor para <strong>Pololine</strong>, entre ellas <strong>Adolfo Cambiaso</strong>.',
-      // TODO-CONTENIDO: Nelson mencionó que de ESPN Polo lo llamaron pero aclaró que nunca llegó
-      // a trabajar ahí ("me llamaron pero nunca laburé"). No se agrega como crédito real hasta que
-      // él confirme explícitamente que quiere incluirlo.
+      'Trabajé en el cuidado de caballos y jugué al <strong>polo</strong>. Excelente nivel de equitación y trabajo rural.',
+      'También realicé humor para páginas de polo como <strong>Pololine</strong> y <strong>ESPN Polo</strong>, con imitaciones de jugadores como <strong>Adolfo Cambiaso</strong>.',
     ],
   },
   {

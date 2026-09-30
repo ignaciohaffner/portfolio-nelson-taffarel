@@ -5,13 +5,8 @@ import { site } from '../content/site';
   <div class="end">
     <h2 id="contacto-titulo">{site.sections.contact}</h2>
     <p class="text">{site.contactText}</p>
-    <address>
-      <strong>{site.alternateName}</strong>
-      <span>{site.rolesLine}</span>
-      <span>{site.residence}</span>
-    </address>
     <ul>
-      <li><a href={site.links.instagram} target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href={site.links.instagram} target="_blank" rel="noopener">@neltaffarel</a></li>
     </ul>
     <p class="mail"><a href={`mailto:${site.mail}`}>{site.mail}</a></p>
   </div>
@@ -20,11 +15,6 @@ import { site } from '../content/site';
 <style>
   .end { max-width: 90rem; margin-inline: auto; padding-top: clamp(2.5rem, 6vw, 5rem); border-top: 1px solid var(--rule); }
   .text { max-width: var(--measure); margin-top: 1.5rem; color: var(--bone); }
-  address { margin-top: 2rem; font-style: normal; display: grid; gap: 0.25rem; color: var(--bone-dim); }
-  address strong {
-    font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase; font-weight: 800;
-    font-size: 1.75rem; color: var(--bone); letter-spacing: 0.01em;
-  }
   ul { margin-top: clamp(1.5rem, 4vw, 3rem); display: grid; gap: 0.25rem; }
   a {
     display: inline-block; padding-block: 0.25rem;
