@@ -47,6 +47,4 @@ export const site = {
     'Una selección de trabajos, imitaciones, participaciones televisivas, material audiovisual y distintos momentos de la trayectoria artística de <strong>Nel Taffarel</strong>.',
   contactText:
     'Para propuestas de actuación, teatro, televisión, cine, publicidad, locuciones, castings, eventos y proyectos audiovisuales:',
-  footerText:
-    'Soy Nel Taffarel, actor, actor de voz e imitador. Mi trabajo incluye teatro, cine, televisión, publicidad, locución e imitaciones.',
 } as const;
