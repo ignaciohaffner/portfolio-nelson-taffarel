@@ -11,7 +11,7 @@ const full = await Promise.all(
   <h2 id="galeria-titulo">{site.sections.gallery}</h2>
   <ul class="grid">
     {gallery.map((photo, i) => (
-      <li class={`cell c${i + 1}`} style={`--ar:${photo.src.width}/${photo.src.height}`}>
+      <li class:list={['cell', { wide: photo.src.width / photo.src.height > 1.45 }]} style={`--ar:${photo.src.width}/${photo.src.height}`}>
         <button type="button" data-open={i} data-full={full[i].src} data-alt={photo.alt} aria-label={`Ampliar foto ${i + 1} de ${gallery.length}`}>
           <Picture
             src={photo.src}
@@ -39,13 +39,12 @@ const full = await Promise.all(
 <style>
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: clamp(1.5rem, 4vw, 2.5rem); max-width: 90rem; }
   .cell { aspect-ratio: 4 / 3; overflow: hidden; background: var(--ink-2); }
-  .cell.c13 { grid-column: span 2; aspect-ratio: 16 / 7; }
+  .cell.wide { grid-column: span 2; }
   .cell button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
   .cell :global(img) { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.82) contrast(1.05); transition: filter 0.6s var(--ease-out), transform 0.9s var(--ease-out); }
   .cell button:hover :global(img), .cell button:focus-visible :global(img) { filter: brightness(1) contrast(1.05); transform: scale(1.03); }
   @media (min-width: 900px) {
     .grid { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-    .cell.c5, .cell.c9, .cell.c13 { grid-column: span 2; aspect-ratio: 8 / 3; }
   }
 
   .lightbox {
