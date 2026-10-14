@@ -1,0 +1,56 @@
+---
+import { featured } from '../content/featured';
+
+const watch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+{featured.length > 0 && (
+  <section id="participaciones" aria-label="Participaciones destacadas" data-featured>
+    <ul class="grid">
+      {featured.map((v) => (
+        <li data-id={v.id} data-title={v.title}>
+          <a class="facade" href={watch(v.id)} rel="noopener" aria-label={`Reproducir ${v.title}`}>
+            <img src={thumb(v.id)} alt="" loading="lazy" decoding="async" />
+            <span class="play" aria-hidden="true"></span>
+          </a>
+          <p class="caption">{v.title}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+<style>
+  .grid { max-width: 90rem; margin: clamp(1.75rem, 4vw, 3rem) auto 0; display: grid; gap: 2.5rem 2rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+  .facade, li :global(iframe) { position: relative; display: block; aspect-ratio: 16 / 9; width: 100%; border: 0; background: var(--ink-2); }
+  .facade img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); transition: filter 0.5s var(--ease-out); }
+  .facade:hover img { filter: brightness(0.95); }
+  .play {
+    position: absolute; left: 50%; top: 50%; width: 4rem; aspect-ratio: 1;
+    translate: -50% -50%; border-radius: 50%; background: var(--curtain);
+    transition: scale 0.4s var(--ease-out);
+  }
+  .play::after {
+    content: ''; position: absolute; left: 54%; top: 50%; translate: -50% -50%;
+    border-style: solid; border-width: 0.6rem 0 0.6rem 1rem; border-color: transparent transparent transparent var(--bone);
+  }
+  .facade:hover .play { scale: 1.08; }
+  .caption {
+    margin-top: 0.75rem; font-family: var(--font-display); font-stretch: 70%; text-transform: uppercase;
+    font-weight: 600; font-size: var(--step-h3); line-height: 1.1; color: var(--bone-dim);
+  }
+</style>
+
+<script>
+  document.querySelector('[data-featured]')?.addEventListener('click', (e) => {
+    const facade = (e.target as Element).closest<HTMLAnchorElement>('.facade');
+    if (!facade) return;
+    e.preventDefault();
+    const item = facade.closest<HTMLElement>('li')!;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${item.dataset.id}?autoplay=1&rel=0`;
+    iframe.title = item.dataset.title ?? 'Video';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    facade.replaceWith(iframe);
+  });
+</script>
