@@ -13,7 +13,7 @@ Portfolio de Nelson Taffarel (actor, comediante y locutor). Astro estático, CSS
 
 ## Dominio (`SITE_URL`)
 
-El dominio se parametriza con la variable `SITE_URL` (por defecto `https://nelsontaffarel.netlify.app`). Alimenta `site` en `astro.config.mjs`, el canonical, Open Graph, JSON-LD, `sitemap-index.xml` y `robots.txt`. Para cambiar de dominio: definir `SITE_URL` en Netlify y redeployar.
+El dominio se parametriza con la variable `SITE_URL` (por defecto `https://nelsontaffarel.com.ar`). Alimenta `site` en `astro.config.mjs`, el canonical, Open Graph, JSON-LD, `sitemap-index.xml` y `robots.txt`. Para cambiar de dominio: definir `SITE_URL` en Netlify y redeployar.
 
 ## Estructura
 

@@ -1,4 +1,4 @@
-export const SITE_URL = (import.meta.env.SITE_URL ?? 'https://nelsontaffarel.netlify.app').replace(/\/$/, '');
+export const SITE_URL = (import.meta.env.SITE_URL ?? 'https://nelsontaffarel.com.ar').replace(/\/$/, '');
 
 // Interruptores de los "chiches": en false desaparecen sin tocar nada más.
 export const features = {

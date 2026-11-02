@@ -5,6 +5,23 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Consolida el SEO en el dominio principal: 301 de todo lo que pida el
+# subdominio netlify.app, conservando la ruta (:splat) y el query string.
+# La regla está atada al host: no afecta a nelsontaffarel.com.ar ni a los
+# deploy previews (deploy-preview-N--nelsontaffarel.netlify.app).
+# force = true es necesario porque los archivos pedidos existen en dist/.
+[[redirects]]
+  from = "https://nelsontaffarel.netlify.app/*"
+  to = "https://nelsontaffarel.com.ar/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://nelsontaffarel.netlify.app/*"
+  to = "https://nelsontaffarel.com.ar/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]
